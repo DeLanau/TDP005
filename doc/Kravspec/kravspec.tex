@@ -1,5 +1,6 @@
 \documentclass[12pt]{TDP005mall}
 \usepackage{graphicx}
+\usepackage{float}
 
 
 \newcommand{\version}{Version 1.0}
@@ -16,6 +17,10 @@ Nadim Lakrouz}
 
 \begin{document}
 \projectpage
+
+\tableofcontents
+\clearpage
+
 \section{Revisionshistorik}
 \begin{table}[!h]
 \begin{tabularx}{\linewidth}{|l|X|l|}
@@ -37,26 +42,58 @@ Spelaren kommer ha tillgång till att skapa olika magiska formler från början 
 Spelet är tänkt för unga personer som gillar action, strategi och att upptäcka nya saker.
 
 \section{Spelupplevelse}
-Spelaren får chansen att upptäcka själv vad hen kan göra för att bli bättre och klara sig längre. T.ex. då spelaren kommer lära sig flera nya magiska formler under varje spelomgång. 
+Spelaren får chansen att upptäcka själv vad hen kan göra för att bli bättre och klara sig längre. T.ex. då spelaren kommer lära sig flera nya magiska formler under varje spelomgång som hen kan använda för att besegra de inkommande fienderna. 
+
+\clearpage
 
 \subsection{Spelmekanik}
-Spelaren kommer inte kunna flytta runt men kommer kunna använda sig av de olika grundformlerna för att attackera, läka och skydda sig mot fiender.
+Spelaren kommer inte kunna flytta runt men kommer kunna använda sig av de olika grundformlerna för att attackera, läka eller skydda sig mot fiender.
 
 \subsubsection{Knappar}
-\begin{itemize}
-\item Q - Vatten formel
-\item W - Jord formel
-\item E - Eld formel
-\item R - Vind formel
-\end{itemize}
+\begin{table}[H]
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Knapp} & \textbf{Element} \\ \hline
+Q              & Vatten           \\ \hline
+W              & Jord             \\ \hline
+E              & Eld              \\ \hline
+R              & Vind             \\ \hline
+\end{tabular}
+\end{table}
 
 \subsubsection{Grundläggande kombinationer}
-\begin{itemize}
-\item QQ - Vatten läknings formel
-\item WW - Jord skölds formel
-\item EE - Eld bolls formel
-\item RR - Virvelvinds formel
-\end{itemize}
+\begin{table}[H]
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Kombination} & \textbf{Magisk formel} \\ \hline
+QQ                   & Vatten läknings formel \\ \hline
+WW                   & Jord skölds formel     \\ \hline
+EE                   & Eld klot formel        \\ \hline
+RR                   & Virvelvinds formel     \\ \hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Formler av kombinerade element}
+\begin{table}[H]
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Knapp} & \textbf{Magisk formel} \\ \hline
+QW             & Lerpöl                 \\ \hline
+QE             & Kokande vatten         \\ \hline
+QR             & Tsunami                \\ \hline
+WQ             & Jordskred              \\ \hline
+WE             & Meteroitstorm          \\ \hline
+WR             & Jordbävning            \\ \hline
+EQ             & Ånga                   \\ \hline
+EW             & Lava spray             \\ \hline
+ER             & Stor eld ray           \\ \hline
+RQ             & Hagelstrom             \\ \hline
+RW             & Varmluft               \\ \hline
+RE             & sandstrorm             \\ \hline
+\end{tabular}
+\end{table}
+
+\clearpage
 
 
 \section{Regler}
@@ -74,7 +111,7 @@ En vertikal rektangel med fixerad storlek
 \subsection{poäng}
 När spelaren dödar fiender får hen poäng.
 \subsection{fiender}
-Fienderna rör sig alltid mot spelaren och när den är inom räckhåll exploderar den och skadar spelaren med x antal damage. Fienderna har varierande livs poäng, hastighet och resistens mot element.
+Fienderna rör sig alltid mot spelaren och när den kolliderar med spelarens hitbox exploderar den och skadar spelaren med x antal skada. Fienderna har varierande livs poäng, hastighet och resistens mot element.
 \section{visualisering}
 \begin{center}
 \includegraphics[scale=0.5]{spel.png}
@@ -84,27 +121,56 @@ Fienderna rör sig alltid mot spelaren och när den är inom räckhåll exploder
 \section{Kravformulering}
 
 \subsection{Ska-krav}
-\begin{itemize}
+\begin{enumerate}
 \item Det ska finnas ett spelarobjekt
 \item Det ska finnas ett fiendeobjekt
-\item Det ska gå att göra formler
-\item Grundformler ska finnas
-\item Spelaren ska kunna ta skada
-\item Spelaren ska kunna göra skada till fiender
-\item Fiender ska kunna ta skada
-\item Fiender ska kunna göra skada
-\item Fiender ska alltid röra sig mot fienden
+\item Det ska gå att göra olika formler
+\item Fyra grundformler ska finnas
+\item QQ formeln ska göra att spelaren får tillbaka liv.
+\item WW formeln ska skapa en köld som skyddar spelaren från skada.
+\item EE formeln ska skjuta ett eldklot som skadar inkommande fiender.
+\item RR formeln skapar en virvelvind som åker mot fienderna och skadar dem.
+\item Spelaren ska kunna bestämma vilka formler som används med knappinmatning enligt tabell 2.
+\item Spelaren ska kunna ta skada av fiender.
+\item Spelaren ska kunna göra skada på fiender med magiska formler
+\item Fiender ska kunna göra skada när de kolliderar med spelarens hitbox.
+\item Fiender ska alltid röra sig mot spelaren
 \item Det ska finnas en startmeny
 \item Spelet ska vara över när spelaren har slut på liv
 \item Det ska finnas en mana mätare töms vid användning av formler
 \item Mana ska regenerera över tid
 \item poäng räknare
-\end{itemize}
+
 
 \subsection{Bör-krav}
-\begin{itemize}
 \item Flera kombinationer av formler och flera element.
 \item Spara poäng
-\end{itemize}
+\end{enumerate}
+
+\clearpage 
+
+\section{Kravuppfyllelse}
+\begin{enumerate}
+    \item \textbf{Spelet ska simulera en värld som innehåller olika typer av objekt. Objekten ska ha olika beteenden och röra sig i världen och agera på olika sätt när de möter andra objekt.} \\ \emph{Krav: 1, 2, 3, 13, 12, 10.}
+    
+    \item \textbf{Det måste finnas minst tre olika typer av objekt och det ska finnas flera instanser av minst två av dessa. T.ex ett spelarobjekt och många instanser av två olika slags fiendeobjekt.} \\ \emph{Krav: 1, 2, 3}
+    
+    \item \textbf{Ett beteende som måste finnas med är att figurerna ska röra sig över skärmen. Rörelsen kan följa ett mönster och/eller vara slumpmässig. Minst ett objekt, utöver spelaren ska ha någon typ av rörelse.} \\ \emph{Krav: 13, 7, 8}
+    
+    \item \textbf{En figur ska styras av spelaren, antingen med tangentbordet eller med musen. Du kan även göra ett spel där man spelar två stycken genom att dela på tangentbordet (varje spelare använder olika tangenter). Då styr man var sin figur.} \\ \emph{Krav: 9}
+    
+    \item \textbf{Grafiken ska vara tvådimensionell.} \\ \emph{Krav:}
+    
+    \item \textbf{Världen (spelplanen) kan antas vara lika stor som fönstret (du kan göra en större spelplan med scrollning, men det blir lite krångligare).} \\ \emph{Krav:}
+    
+    \item \textbf{Det ska finnas kollisionshantering, det vill säga, det ska hända olika saker när objekten möter varandra, de ska påverka varandra på något sätt. T.ex kan ett av objekten tas bort, eller så kan objekten förvandlas på något sätt, eller så kan ett nytt objekt skapas. (Ett exempel på att skapa/ta bort objekt är när man i Space Invaders trycker på skjuta-knappen, t.ex en musknapp, då avfyras ett laserskott och skottet blir då en ny figur som skapas och placeras i världen, på en position vid laserkanonens mynning. Skottet rör sig framåt (uppåt) och om det träffar ett fiendeskepp tas både skottet och skeppet bort, om skottet kommer utanför spelplanen, dvs det missar, tas det endast bort.)} \\ \emph{Krav: 13, 7, 8}
+    
+    \clearpage
+    
+    \item \textbf{Det ska vara enkelt att lägga till eller ändra banor i spelet. Detta kan exempelvis lösas genom att läsa in banor från en fil (lite som i Sokoban-labben i TDP002), eller genom att ha funktioner i programkoden som bygger upp en datastruktur som definierar en bana.} \\ \emph{Krav: }
+    
+    \item \textbf{Spelet måste upplevas som ett sammanhängande spel som går att spela!} \\ \emph{Krav:}
+\end{enumerate}
 
 \end{document}
+

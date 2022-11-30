@@ -1,6 +1,10 @@
-*
+/*
+/*/
 
-!doc
 !.gitignore
 !CMakeLists.txt
 !README.md
+
+!/doc/
+!/include/
+!/src/

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "utils/resource_manager.h"
 
 int const MENU_STATE{0};
 int const GAME_STATE{1};
@@ -39,6 +40,9 @@ public:
 
 private:
     unsigned int curr_state{0};
+    sf::Texture texture;
+    sf::Sprite sprite;
+
 };
 
 class Game_State : public Base_State

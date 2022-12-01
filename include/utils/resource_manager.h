@@ -1,0 +1,19 @@
+#pragma once
+
+#include <unordered_map>
+#include <string>
+#include <memory>
+
+template<typename T>
+class Resource_Manager
+{
+public:
+    static T &load(std::string const &file);
+private:
+    static std::unordered_map<std::string, std::shared_ptr<T>> file_list;
+};
+
+template<typename T>
+std::unordered_map<std::string, std::shared_ptr<T>> Resource_Manager<T>::file_list;
+
+#include "resource_manager.tcc"

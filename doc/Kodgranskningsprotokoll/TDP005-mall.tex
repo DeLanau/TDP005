@@ -1,0 +1,82 @@
+\documentclass[12pt]{TDP005mall}
+
+
+
+\newcommand{\version}{Version 1.0}
+\author{Lukas Freyland, \url{lukfr510@student.liu.se}\\
+  Elliot Johansson, \url{elljo130@student.liu.se}\\
+  Nadim Lakrouz, \url{nadla777@student.liu.se}}
+\title{Kodgranskningsprotokoll}
+\date{2022-12-07}
+\rhead{Lukas Freyland\\
+Elliot Johansson\\
+Nadim Lakrouz}
+
+
+
+\begin{document}
+\projectpage
+\section{Revisionshistorik}
+\begin{table}[!h]
+\begin{tabularx}{\linewidth}{|l|X|l|}
+\hline
+Ver. & Revisionsbeskrivning & Datum \\\hline
+1.0 & Första versionen av protokollet & 221207 \\\hline
+\end{tabularx}
+\end{table}
+
+
+\section{Möte}
+Mötet var den 6 december kl. 10.30. Vi gick igenom varandras kod och redovisade vad vi hade gjort framtills mötet samt hur vi ligger till. Under mötet diskuterade vi bristerna med våra projekt och hur projektet kunde förbättras samt vilka styrkor båda projekten hade. I slutet av mötet delade vi våra gitlabprojekt så vi kan titta igenom koden senare samt för att jämföra koden med designspecifikationen.
+
+\section{Granskat projekt}
+Spelet vi granskade kalladas för Dogeater. Dogeater är ett ''bullet hell'' spel vilket betyder att spelet går ut på att skjuta ner inkommande fiender med projektiler samtidigt som spelaren försöker undvika en stor mängd av projektiler som fiender har skjutit. På spelplanen finns en spelare i form av ett flygplan samt fiender som kommer fram när spelplanen har skrollat upp till dem. 
+
+\subsection{Gameloop}
+Gameloopen i det granskade projektet är för stor, enligt \href{https://www.ida.liu.se/~TDP005/current/}{kurshemsida}\footnote{\href{https://www.ida.liu.se/~TDP005/current/}{https://www.ida.liu.se/\(\sim\)TDP005/current/}} så ska loopen vara så liten som möjligt. Det kan lösas genom att dela upp koden i två klasser, 'Engine'' och ''Main''. Där ''Engine'' hanterar alla klasser och funktioner i spelet och ''Main'' hanterar körningen av programmet. 
+
+\subsection{Game}
+Klassen \textit{Game} i spelet är för stor. 
+
+\textit{Game} hanterar mer än vad som behövs i den klassen vilket den klassen inte borde. Funktionerna mellan klasserna borde delas upp mer. Till exempel så borde inte \textit{Game} hantera kollision. ''CollisionCheck'' kan hanteras internt i \textit{Player} klassen eller \textit{Enemy} klassen. 
+''SpawnEnemy'' Funktionen kan ligga i \textit{Enemy} manager som kan också hantera ''update'' och ''render''.
+Hanteringen av JSON-filen sker också i \textit{Game} klassen som borde hanteras i en dedikerad klass. Det i sin tur skulle förbättre objektorienteringen av klasserna.
+
+\subsection{Minnesläckor}
+Det fanns ej något konkret sätt att hantera minnesläckor i koden. Det skapar stora problem då speler kommer börja lagga och tillslut krasha då minnet tar slut.
+
+\subsection{CMakeFil}
+Dogeatergruppen har lagt flaggorna i en alias i bashrc-filen istället för att förvara dem i CMake där man efteråt kan komma åt dem och ändra om det skulle behövas. 
+
+
+
+\subsection{Dokumentation av projektet}
+Koden för Dogeater spelet saknar kommentarer vilket gör koden mindre läslig och det går inte att generera en referensmanual med Doxygen isåfall. 
+Enligt \href{https://www.ida.liu.se/~TDP005/current/}{kurshemsida}\footnote{\href{https://www.ida.liu.se/~TDP005/current/}{https://www.ida.liu.se/\(\sim\)TDP005/current/}} ska koden av projektet kommenteras enligt Doxygen för att kunna skapa en meningsfull dokumentation.
+
+
+\subsection{Positiv feedback}
+Kommentarer om vad som var bra med projektet Dogeater.  
+
+\subsubsection{JSON hantering}
+Data hantering med JSON-fil var bra. Det gav mycket flexibilitet till projektet då det blir lättare att skapa flera olika scenarion för samma spel. Och det är också bra för att då behövs ingen kodändring för att skapa de olika scenarion utan den ändringen sker i JSON-filen.
+
+\subsubsection{Pekare}
+Dogeatergruppen använde pekare flera gånger och på ett flitigt sätt. 
+
+
+\section{Vårt Projket}
+Kommentarer på vårt projekt.
+
+\subsection{Const}
+Dogeatergruppen påpekade att vi kunde öka användningen av ''const'' bland annat i get-funktioner. Det går lätt att fixa då vi behäver bara lägga till const till de relevanta medlemsfunktionerna
+
+\subsection{Uppdelning}
+Vi hade för mycket uppdelning bland klasserna. 
+
+\subsection{main}
+\textit{Main} klassen hade lite innehåll. Men det ska den vara. 
+
+
+
+\end{document}

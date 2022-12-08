@@ -7,4 +7,19 @@
 - resources - kommer ha flera fil med resources (t.ex. ljud, bilder osv)
 - src - alla .cpp fil 
 
+## TODO
+
+Utility:
+
+    Clock och random
+
+Enemy:
+
+    Resource manager
+    Deconstructor
+    Fixa Enemy Handler
+
+Player:
+    Fixa update och render
+
 ## Backlog

@@ -1,0 +1,14 @@
+#include "enemyHandler.h"
+
+
+  void HandleEnemies::createNew(float x)
+  {
+    holder.push_back(new Enemy{x, 100, 50});
+  }
+
+  std::vector<Enemy*> HandleEnemies::getEnemies()
+  {
+    return holder;
+  }
+  
+

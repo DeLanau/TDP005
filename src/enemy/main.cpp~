@@ -1,0 +1,83 @@
+#include <SFML/Graphics.hpp>
+#include "enemy.cpp"
+#include "enemyHandler.cpp"
+
+const size_t width = 1024;
+const size_t height = 768;
+
+
+int main() {
+    sf::RenderWindow window{sf::VideoMode{width, height}, "Demo"};
+    window.setKeyRepeatEnabled(false);
+    window.setVerticalSyncEnabled(true);    
+
+
+    HandleEnemies enemies;
+    
+    enemies.createNew(100);
+    enemies.createNew(200);
+    enemies.createNew(500);
+    enemies.createNew(800);
+
+    // for (auto p : enemies.getEnemies())
+    //   {
+    //     p->getCircle().setTexture(&texture);
+    //     p->getCircle().setOrigin(texturesize / 2.0f);
+    //   }
+
+    sf::Clock clock;
+
+    sf::Time delta = sf::milliseconds(10);
+            
+    bool quit = false;
+    while (!quit) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            switch (event.type) {
+            case sf::Event::Closed:
+                quit = true;
+                break;
+            default:
+              break;
+            }
+        }
+
+        if (quit)
+          break;
+
+        sf::Time elapsed = clock.getElapsedTime();
+
+        window.clear();
+
+        for (auto p : enemies.getEnemies())
+          {
+            p->update();
+            window.draw(p->getCircle());
+            if (elapsed > delta)
+              {
+                p->setLocation(0, 1);
+              }
+          }
+        if (elapsed > delta)
+          {
+            clock.restart();
+          }
+
+
+
+
+        // circle.setPosition(location);
+        // if (elapsed > delta)
+        //   {
+        //     for (auto p : enemies.getEnemies())
+        //       {
+        //         p->setLocation(0, 1);
+        //       }
+        //     en.setLocation(0, 2);
+        //     clock.restart();
+        //   }
+        window.display();
+    }
+
+    return 0;
+}

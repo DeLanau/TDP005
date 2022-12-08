@@ -1,0 +1,16 @@
+#pragma once
+#include <SFML/Graphics.hpp>
+#include <vector>
+#include "enemy.h"
+
+
+class HandleEnemies
+{
+public:
+
+  void createNew(float x);  
+  std::vector<Enemy*> getEnemies();
+  
+private:
+  std::vector<Enemy*> holder;
+};

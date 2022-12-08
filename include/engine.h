@@ -2,17 +2,32 @@
 
 #include "SFML/Graphics.hpp"
 #include "SFML/Window.hpp"
-#include "Base_State.h"
-
+#include "state/Base_State.h"
+#include "state/Menu_State.h"
+/**
+ * @brief Engine to run game using different states
+ * 
+ */
 class Engine
 {
 public:
+    /**
+    * @brief Construct a new Engine object
+    * 
+    */
     Engine();
-
+    /**
+     * @brief Destroy the Engine object
+     * 
+     */
     ~Engine();
-
+    /**
+     * @brief run game 
+     * 
+     * @return int 
+     */
     int run();
-
+    
 private:
     int current_state;
     sf::RenderWindow window;

@@ -1,8 +1,9 @@
-#include "Base_State.h"
+#include "state/Base_State.h"
+#include "spells/Fire_Spell.h"
 
 #include <iostream>
 
-using namespace sf; 
+using namespace sf;
 
 Game_State::Game_State()
 {
@@ -14,17 +15,19 @@ int Game_State::get_current_state()
     return curr_state;
 }
 
+Fire_Spell spell;
+
 void Game_State::update()
 {
-    
+    spell.update();
 }
 
 void Game_State::render(RenderTarget & target)
 {
-    
+    spell.render(target);
 }
 
 int Game_State::get_next_state()
 {
-    return GAME_OVER_STATE;
+    return GAME_STATE;
 }

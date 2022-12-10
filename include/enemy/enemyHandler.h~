@@ -3,6 +3,7 @@
 #include <vector>
 #include "enemy.h"
 #include <random>
+#include "resource_manager.h"
 
 class HandleEnemies
 {

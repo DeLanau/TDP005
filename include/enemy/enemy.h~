@@ -4,7 +4,7 @@
 
 class Enemy
 {
- public:
+public:
   /*
    * @brief create the Enemy object
    */
@@ -27,8 +27,11 @@ class Enemy
    *@param y
    */
   void setLocation(float x, float y);
+  sf::Vector2f getLocation();
+  int getDistanceCircles(Enemy& otherEnemy);
+  bool checkCollision(Enemy& otherEnemy);
   
- private:
+private:
   float yValue;
   float xValue;
   float size;

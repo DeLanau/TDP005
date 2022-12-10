@@ -7,8 +7,11 @@
 namespace utility 
 {
 
-bool debounce(sf::Keyboard::Key key);
+  bool debounce(sf::Keyboard::Key key);
 
-void debug_print(std::string str);
+  void debug_print(std::string str);
+
+  int randomNumber(int x, int y);
+  sf::Clock getClock();
 
 }

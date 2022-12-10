@@ -27,7 +27,7 @@ std::vector<Enemy*> HandleEnemies::getEnemies()
   return enemy_container;
 }
   
-void HandleEnemies::rendering(sf::RenderTarget & target, sf::Clock clock)
+void HandleEnemies::rendering(sf::RenderTarget & target)
 {
   sf::Time elapsed_time = clock.getElapsedTime();
   

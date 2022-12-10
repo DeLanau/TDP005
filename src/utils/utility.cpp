@@ -32,10 +32,4 @@ namespace utility{
     return randNumb(rand);
   }
 
-  sf::Clock getClock()
-  {
-    sf::Clock clock;
-    return clock;
-  }
-
 }

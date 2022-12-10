@@ -14,7 +14,6 @@ int main() {
 
 
   HandleEnemies enemies;
-  sf::Clock clock;
 
   bool quit = false;
   while (!quit) {
@@ -35,7 +34,7 @@ int main() {
 
     
     window.clear();
-    enemies.rendering(window, clock);
+    enemies.rendering(window);
     window.display();
   }
 

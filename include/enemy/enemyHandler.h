@@ -24,10 +24,11 @@ public:
    *
    * @param clock
    */
-  void rendering(sf::RenderTarget & target, sf::Clock clock);
+  void rendering(sf::RenderTarget & target);
   
 private:
   std::vector<Enemy*> enemy_container;
   sf::Time render_time{sf::milliseconds(35)};
   sf::Time enemy_create_time{sf::milliseconds(1000)};
+  sf::Clock clock;
 };

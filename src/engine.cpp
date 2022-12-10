@@ -18,33 +18,25 @@ Engine::Engine() :
 
 }
 
-Engine::~Engine()
-{
-    // for (auto s : states)
-    //     delete s.second
-}
-
 int Engine::run()
 {
     sf::Clock clock;
 
-    while(window.isOpen())
-    {
-       
-        if(utility::debounce(sf::Keyboard::Escape))
+    while(window.isOpen()) {
+
+        if (utility::debounce(sf::Keyboard::Escape))
             window.close();
 
-        current_state = states.at(current_state) -> get_current_state();
-        states.at(current_state) -> update();
+        current_state = states.at(current_state)->get_current_state();
+        states.at(current_state)->update();
         window.clear();
-        states.at(current_state) -> render(window);
+        states.at(current_state)->render(window);
         window.display();
-        current_state = states.at(current_state) -> get_next_state();
+        current_state = states.at(current_state)->get_next_state();
 
-        if(current_state == QUIT_STATE)
+        if (current_state == QUIT_STATE)
             window.close();
 
         window.setFramerateLimit(60);
     }
-    
 }

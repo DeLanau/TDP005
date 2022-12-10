@@ -1,13 +1,27 @@
-#include "state/Base_State.h"
-#include "spells/Fire_Spell.h"
+#include "state/Game_State.h"
+#include "spells/Spell_Manager.h"
 
 #include <iostream>
 
 using namespace sf;
 
-Game_State::Game_State()
+Game_State::Game_State() :
+texture{Resource_Manager<sf::Texture>::load("resources/back_ground.png")},
+font{Resource_Manager<sf::Font>::load("resources/font/toppo.ttf")},
+fps{},
+sprite{},
+spell_manager{}
 {
     std::cout << "Game state on" << std::endl;
+
+    sprite.setTexture(texture);
+    sprite.setOrigin(20, 30);
+
+    fps.setPosition(1280, 100);
+
+    Spell_Manager spell_manager;
+    Player player;
+    Button_Manager buttons;
 }
 
 int Game_State::get_current_state()
@@ -15,16 +29,29 @@ int Game_State::get_current_state()
     return curr_state;
 }
 
-Fire_Spell spell;
-
 void Game_State::update()
 {
-    spell.update();
+    buttons.update();
+    spell_manager.update(player);
+    player.update();
+
+    float lastTime = 0.f;
+    float currentTime = clock.restart().asSeconds();
+    float fps1 = 1.f / (currentTime - lastTime);
+    lastTime = currentTime;
+
+    fps = Text(std::to_string((int)fps1), font, 32);
+    fps.setPosition(0, 680);
+    fps.setColor(sf::Color::Black);
 }
 
 void Game_State::render(RenderTarget & target)
 {
-    spell.render(target);
+    target.draw(sprite);
+    buttons.render(target);
+    spell_manager.render(target, player);
+    player.renderPlayerGUI(target);
+    target.draw(fps);
 }
 
 int Game_State::get_next_state()

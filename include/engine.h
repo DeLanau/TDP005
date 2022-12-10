@@ -4,6 +4,7 @@
 #include "SFML/Window.hpp"
 #include "state/Base_State.h"
 #include "state/Menu_State.h"
+#include "state/Game_State.h"
 /**
  * @brief Engine to run game using different states
  * 
@@ -16,11 +17,6 @@ public:
     * 
     */
     Engine();
-    /**
-     * @brief Destroy the Engine object
-     * 
-     */
-    ~Engine();
     /**
      * @brief run game 
      * 

@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "utils/resource_manager.h"
+#include "spells/Spell_Manager.h"
 
 int const MENU_STATE{0};
 int const GAME_STATE{1};
@@ -41,24 +42,6 @@ public:
      * @return int 
      */
     virtual int get_next_state() = 0; 
-};
-
-class Game_State : public Base_State
-{
-public:
-    Game_State();
-        
-    virtual ~Game_State() = default;
-        
-    virtual void update() override;
-
-    virtual void render(sf::RenderTarget & target) override;
-        
-    virtual int get_current_state() override;
-
-    virtual int get_next_state() override;
-private:
-     unsigned int curr_state{1};
 };
 
 class Game_Over_State : public Base_State

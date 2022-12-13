@@ -1,7 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "../utils/resource_manager.h"
+#include "../utils/utility.h"
 #include <cmath>
+#include <vector>
 
 class Enemy
 {
@@ -9,11 +11,11 @@ public:
   /*
    * @brief create the Enemy object
    */
-  Enemy(float x, float y, float size);
+  Enemy(float size);
   /*
    * @brief update enemy location
    */
-  void update();
+  void update(sf::Vector2i pos);
   /*
    * @brief render enemy
    *
@@ -62,13 +64,18 @@ public:
    * @return double
    */
   double getxMovement();
+  double getyMovement();
+  void setMovement(sf::Vector2i pos);
+  sf::Vector2f spawnPoint();
   
 private:
-  float yValue;
-  float xValue;
   float size;
   double xMovement;
+  double yMovement;
   sf::CircleShape circle{size};
-  sf::Vector2f location{xValue, yValue};
+  sf::Vector2f location{};
   sf::Texture texture;
+  std::vector<sf::Texture*> textures; // unused
+  double hp{100};
+
 };

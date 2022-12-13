@@ -1,0 +1,20 @@
+#pragma once
+#include <SFML/Graphics.hpp>
+
+
+class Enemy
+{
+ public:
+  Enemy(float x, float y, float size);
+  void update();
+  sf::CircleShape getCircle();
+  void setLocation(float x, float y);
+  
+ private:
+  float yValue;
+  float xValue;
+  float size;
+  sf::CircleShape circle{size};
+  sf::Vector2f location{xValue, yValue};
+  sf::Texture texture;
+};

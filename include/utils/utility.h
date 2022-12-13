@@ -12,4 +12,6 @@ namespace utility
   void debug_print(std::string str);
 
   int randomNumber(int x, int y);
+  sf::Clock getClock();
+
 }

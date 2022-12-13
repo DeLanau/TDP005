@@ -1,17 +1,16 @@
 #include "enemy/enemy.h"
 
 
-
-Enemy::Enemy(float x, float y, float size): xValue{x}, yValue{y}, size{size}, texture{Resource_Manager<sf::Texture>::load("resources/enemy.png")}
+Enemy::Enemy(float size): size{size}, location{spawnPoint()}, texture{Resource_Manager<sf::Texture>::load("resources/enemy0.png")}
 {
   circle.setTexture(&texture);
-  xMovement = (450-location.x)/800;
 }
 
   
-void Enemy::update()
+void Enemy::update(sf::Vector2i pos)
 {
   circle.setPosition(location);
+  setMovement(pos);
 }
 
 void Enemy::render(sf::RenderTarget & target)
@@ -64,4 +63,56 @@ bool Enemy::checkCollision(Enemy& otherEnemy)
 double Enemy::getxMovement()
 {
   return xMovement;
+}
+
+double Enemy::getyMovement()
+{
+  return yMovement;
+}
+
+void Enemy::setMovement(sf::Vector2i pos)
+{
+  if (pos.y > location.y + circle.getRadius())
+    yMovement = 1;
+  else if (pos.y < location.y + circle.getRadius())
+    yMovement = -1;
+  
+  if (pos.x > location.x + circle.getRadius())
+    xMovement = 1;
+  else if (pos.x < location.x + circle.getRadius())
+    xMovement = -1;
+  
+  if (pos.x == location.x + circle.getRadius())
+    xMovement = 0;
+  if (pos.y == location.y + circle.getRadius())
+    yMovement = 0; 
+}
+
+
+sf::Vector2f Enemy::spawnPoint()
+{
+  int spawn{utility::randomNumber(0, 3)};
+  sf::Vector2f loc;
+  
+  if (spawn == 0)
+    {
+      loc.x = 1280;
+      loc.y = utility::randomNumber(250, 450);
+    }
+  else if (spawn == 1)
+    {
+      loc.x = -100;
+      loc.y = utility::randomNumber(250, 450);
+    }
+  else if (spawn == 2)
+    {
+      loc.x = utility::randomNumber(500, 700);
+      loc.y = 720;
+    }
+  else if (spawn == 3)
+    {
+      loc.x = utility::randomNumber(500, 700);
+      loc.y = -100;
+    }
+  return loc;
 }

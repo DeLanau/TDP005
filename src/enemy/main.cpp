@@ -3,8 +3,8 @@
 #include "enemy/enemyHandler.h"
 #include <iostream>
 
-const size_t width = 1024;
-const size_t height = 768;
+const size_t width = 1280;
+const size_t height = 720;
 
 
 int main() {
@@ -30,11 +30,10 @@ int main() {
 
     if (quit)
       break;
-
-
+    sf::Vector2i position = sf::Mouse::getPosition(window);
     
     window.clear();
-    enemies.rendering(window);
+    enemies.rendering(window, position);
     window.display();
   }
 

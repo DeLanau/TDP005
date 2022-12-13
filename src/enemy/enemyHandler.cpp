@@ -3,10 +3,8 @@
 
 void HandleEnemies::createNewEnemy()
 {
-  // std::random_device rand;
-  // std::uniform_int_distribution<int> randNumb(0, 924);
   
-  Enemy* temporaryPtr{new Enemy{utility::randomNumber(0, 924), -100, 50}};
+  Enemy* temporaryPtr{new Enemy{25}};
   bool noColidingEnemies{true};
   
   for (auto enemyList : enemy_container)
@@ -27,17 +25,17 @@ std::vector<Enemy*> HandleEnemies::getEnemies()
   return enemy_container;
 }
   
-void HandleEnemies::rendering(sf::RenderTarget & target)
+void HandleEnemies::rendering(sf::RenderTarget & target, sf::Vector2i pos)
 {
   sf::Time elapsed_time = clock.getElapsedTime();
   
   for (auto current_enemy : enemy_container)
     {
-      current_enemy->update();
+      current_enemy->update(pos);
       current_enemy->render(target);
       if (elapsed_time > render_time)
 	{
-	  current_enemy->setLocation(current_enemy->getxMovement(), 1);
+	  current_enemy->setLocation(current_enemy->getxMovement(), current_enemy->getyMovement());
 	}
     }
 
@@ -48,6 +46,6 @@ void HandleEnemies::rendering(sf::RenderTarget & target)
   if (elapsed_time > enemy_create_time)
     {
       createNewEnemy();
-      enemy_create_time += sf::milliseconds(utility::randomNumber(1000, 2000));
+      enemy_create_time += sf::milliseconds(utility::randomNumber(2500, 5000));
     }
 }

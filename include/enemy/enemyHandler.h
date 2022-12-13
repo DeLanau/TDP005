@@ -24,7 +24,7 @@ public:
    *
    * @param clock
    */
-  void rendering(sf::RenderTarget & target);
+  void rendering(sf::RenderTarget & target, sf::Vector2i pos);
   
 private:
   std::vector<Enemy*> enemy_container;

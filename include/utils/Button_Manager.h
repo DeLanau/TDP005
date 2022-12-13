@@ -23,6 +23,10 @@ public:
     {
         return spell_activate;
     };
+  bool set_spell_active(bool state)
+    {
+      spell_activate = state;
+    };
 
     sf::Text &get_current_button()
     {

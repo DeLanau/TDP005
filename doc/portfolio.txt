@@ -1,0 +1,14 @@
+namn
+
+kort beskrvning
+The wizarding game
+
+beskrivning
+Spelet handlar om en trollkarl som ska skydda sig själv från inkommande fiender genom att kasta magiska trollformler. formlerna kastas med hjälp av fyra knappar och styrs av muspekaren. Fiender inkommer från övre delen av skärmen och spawnar med varierande frekvens. Målet med spelet är att klara sig så länge som möjligt och försvara sig samtidigt som man tillhandahåller den sakta återgenererande manan som styr hur många formler man kan kasta.
+
+lärdommar
+Under projektets gång har vi fått arbeta med objektorienterad programmering. Detta har tvingat en tänka på hur man ska dela upp spelets olika delar på ett effektivt och logiskt sätt. Vi har arbetat med grafik biblioteket sfml 
+
+taggar
+c++
+sfml

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2022.8.31)  11 DEC 2022 15:48
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2022/dev/Debian) (preloaded format=xelatex 2022.8.31)  8 DEC 2022 10:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -9,8 +9,8 @@ L3 programming layer <2022-01-21> (./TDP005mall.cls
 Document Class: TDP005mall 2016/06/03 TDP005 Project template
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count181
 \c@section=\count182
@@ -638,17 +638,47 @@ LaTeX Font Warning: Font shape `T1/arial/bx/n' in size <28> not available
 (Font)              size <29.86> substituted on input line 18.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 18.
+(Font)              <12> on input line 18.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 18.
+(Font)              <8> on input line 18.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 18.
 [1
 
-] [1] [2]
-File: uml_diagram.jpg Graphic file (type bmp)
-<uml_diagram.jpg>
- [3] 
+]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 36.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 36.
+
+
+Package fancyhdr Warning: \headheight is too small (40.0pt): 
+(fancyhdr)                Make it at least 41.67804pt, for example:
+(fancyhdr)                \setlength{\headheight}{41.67804pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.67804pt}.
+
+[1]
+
+Package fancyhdr Warning: \headheight is too small (40.0pt): 
+(fancyhdr)                Make it at least 41.67804pt, for example:
+(fancyhdr)                \setlength{\headheight}{41.67804pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.67804pt}.
+
+[2] 
 AED: lastpage setting LastPage
-[4] (./TDP005-mall.aux)
+
+Package fancyhdr Warning: \headheight is too small (40.0pt): 
+(fancyhdr)                Make it at least 41.67804pt, for example:
+(fancyhdr)                \setlength{\headheight}{41.67804pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.67804pt}.
+
+[3] (./TDP005-mall.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.86pt have occurred.
@@ -657,15 +687,15 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `TDP005-mall.out' has not changed.
-(rerunfilecheck)             Checksum: 72B0F13EAFACF72E6BA7824822CEF52D;1078.
+(rerunfilecheck)             Checksum: 8EBF27879334D57865A9A2FF0CE2CCEF;1662.
  ) 
 Here is how much of TeX's memory you used:
- 20802 strings out of 476191
- 393173 string characters out of 5812072
- 702402 words of memory out of 5000000
- 41192 multiletter control sequences out of 15000+600000
- 471218 words of font info for 39 fonts, out of 8000000 for 9000
+ 20825 strings out of 476191
+ 393571 string characters out of 5812072
+ 701035 words of memory out of 5000000
+ 41200 multiletter control sequences out of 15000+600000
+ 473995 words of font info for 53 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 115i,11n,118p,557b,640s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 115i,11n,118p,536b,640s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on TDP005-mall.xdv (5 pages, 51252 bytes).
+Output written on TDP005-mall.xdv (4 pages, 48848 bytes).

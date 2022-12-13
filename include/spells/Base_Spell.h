@@ -44,4 +44,7 @@ public:
      * @return int
      */
     virtual double get_damage() = 0;
+protected:
+  sf::Clock clock;
+  sf::Time render_time{sf::milliseconds(300)};
 };

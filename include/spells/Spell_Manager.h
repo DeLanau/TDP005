@@ -4,7 +4,10 @@
 
 #pragma once
 
+#include "spells/Water_Spell.h"
+#include "spells/Earth_Spell.h"
 #include "spells/Fire_Spell.h"
+#include "spells/Wind_Spell.h"
 #include "entity/player.h"
 #include "utils/Button_Manager.h"
 
@@ -15,19 +18,22 @@ class Spell_Manager
 
 public:
 
-    Spell_Manager();
+  Spell_Manager();
 
-    ~Spell_Manager();
+  ~Spell_Manager();
 
-    void update(Player & player);
+  void update(Player & player);
 
-    void render(sf::RenderTarget & target, Player & player);
+  void render(sf::RenderTarget & target, Player & player);
 
-    void run_spells(sf::RenderTarget & target, Player & player);
+  void run_spells(sf::RenderTarget & target, Player & player);
 
 private:
 
-    Button_Manager buttons;
-    Fire_Spell fire;
+  Button_Manager buttons;
+  Fire_Spell fire;
+  Water_Spell water;
+  Earth_Spell earth;
+  Wind_Spell wind;
 };
 

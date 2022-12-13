@@ -1,14 +1,23 @@
 # Fdb version 3
-["xdvipdfmx"] 1670770138 "TDP005-mall.xdv" "TDP005-mall.pdf" "TDP005-mall" 1670770138
-  "TDP005-mall.xdv" 1670770138 51252 fd9d9bbde341f9ceda98b9aa77e79f1e "xelatex"
+["xdvipdfmx"] 1670490838 "TDP005-mall.xdv" "TDP005-mall.pdf" "TDP005-mall" 1670490838
+  "TDP005-mall.xdv" 1670490838 48848 f07895be923377c3430a45e2678ba7db "xelatex"
   (generated)
   "TDP005-mall.pdf"
-["xelatex"] 1670770137 "TDP005-mall.tex" "TDP005-mall.xdv" "TDP005-mall" 1670770138
+["xelatex"] 1670490838 "TDP005-mall.tex" "TDP005-mall.xdv" "TDP005-mall" 1670490838
   "/etc/texmf/web2c/texmf.cnf" 1661934760 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
-  "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm" 1136768653 3584 adb004a0c8e7c46ee66cad73671f37b4 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm1200.tfm" 1136768653 3584 f80ddd985bd00e29e9a6047ebd9d4781 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecrm2986.tfm" 1136768653 3584 bfd2c927515e1adabb0d2c9e2b56e75d ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm" 1136768653 1520 eccf95517727cb11801f4f1aee3a21b4 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr6.tfm" 1136768653 1300 b62933e007d01cfd073f79b963c01526 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr8.tfm" 1136768653 1292 21c1c5bfeaebccffdb478fd231a0997d ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1136768653 1124 6c73e740cf17375f03eec0ee63599741 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1136768653 1116 933a60c408fc0a863a92debe84b2d294 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
   "/usr/share/texlive/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "/usr/share/texlive/texmf-dist/tex/generic/babel-swedish/swedish.ldf" 1612650737 6812 2231579b772e23fa6e867648a377d379 ""
   "/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty" 1643231327 147419 2058c0f5e6893b19c8f3ce95d177646c ""
@@ -87,7 +96,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/base/article.cls" 1636758526 20144 8a7de377ae7a11ee924a7499611f5a9d ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty" 1636758526 3034 3bfb87122e6fa8758225c0dd3cbaceba ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty" 1636758526 2462 754d6b31b2ab5a09bb72c348ace2ec75 ""
-  "/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo" 1636758526 8448 96f18c76bf608a36ee6fbf021ac1dd32 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo" 1636758526 8449 bc7344e882df4d7e51c046514dee83e4 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd" 1622581934 2430 06a89bcded389391906798ea7a3f3aaa ""
   "/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty" 1601931149 46845 3b58f70c6e861a13d927bff09d35ecbc ""
   "/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty" 1612734021 17086 7ed8cbc4d361ec87392817e0dd4f65ec ""
@@ -133,13 +142,12 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1661934813 5131736 bae57b66bf0b2484462a24f961cfe349 ""
-  "TDP005-mall.aux" 1670770138 2258 5b1ed7b8713548c29d2f89c031502f4b "xelatex"
-  "TDP005-mall.out" 1670770138 1078 72b0f13eafacf72e6ba7824822cef52d "xelatex"
-  "TDP005-mall.tex" 1670770136 5303 a2f2702496061ac602574afebb913b7e ""
+  "TDP005-mall.aux" 1670490838 2620 f9bdeeb309f1af53f4a5ddcfb65544f5 "xelatex"
+  "TDP005-mall.out" 1670490838 1662 8ebf27879334d57865a9a2ff0ce2ccef "xelatex"
+  "TDP005-mall.tex" 1670490836 4396 17be1dcb42c8e81dcf32938411c1711c ""
   "TDP005mall.cls" 1670490421 1774 756afd667cbcdfd7fdc90226cdbef49e ""
   "ida.png" 1670490421 7786 f8e6fdcd3fff5911dca9765ffa4de313 ""
   "lith.png" 1670490421 15882 4db45f42034d096c9aba5be88636d034 ""
-  "uml_diagram.jpg" 1670490421 314315 157a93026083e4b68fc780554fe674d7 ""
   (generated)
   "TDP005-mall.aux"
   "TDP005-mall.log"

@@ -13,13 +13,13 @@ public:
 
     virtual ~Fire_Spell() = default;
 
-    virtual void update() override;
+    virtual void update(Player & player) override;
 
     virtual void render(sf::RenderTarget & target) override;
 
-    virtual int get_mana() override;
+    virtual double get_mana() override;
 
-    virtual int get_damage() override;
+    virtual double get_damage() override;
 
 private:
     unsigned int mana{}, damage{};

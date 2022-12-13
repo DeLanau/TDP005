@@ -10,7 +10,7 @@ public:
 
     virtual ~Menu_State() = default;
 
-    virtual void update() override;
+    virtual void update(sf::Time delta) override;
 
     virtual void render(sf::RenderTarget & target) override;
         

@@ -2,7 +2,6 @@
 
 #include <SFML/Graphics.hpp>
 #include "utils/resource_manager.h"
-#include "spells/Spell_Manager.h"
 
 int const MENU_STATE{0};
 int const GAME_STATE{1};
@@ -23,7 +22,7 @@ public:
      * 
      * @return * void 
      */
-    virtual void update() = 0;
+    virtual void update(sf::Time delta) = 0;
     /**
      * @brief render/draw obj
      * 
@@ -51,7 +50,7 @@ public:
 
     virtual ~Game_Over_State() = default;
 
-    virtual void update() override;
+    virtual void update(sf::Time delta) override;
 
     virtual void render(sf::RenderTarget & target) override;
         

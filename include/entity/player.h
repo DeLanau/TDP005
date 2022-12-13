@@ -2,6 +2,14 @@
 
 #include "SFML/Graphics.hpp"
 
+struct outOfWindow
+{
+    bool isLeft = false;
+    bool isRight = false;
+    bool isUp = false;
+    bool isDown = false;
+};
+
 class Player
 {
 public:
@@ -10,8 +18,6 @@ public:
      *
     */
     Player();
-
-    ~Player();
     /**
      * @brief Adds the choosen parameter "amount" to the member variable "mana"
      *
@@ -44,22 +50,40 @@ public:
     */
     void renderPlayerGUI(sf::RenderTarget & target);
 
+    void render(sf::RenderTarget & target);
+
+    sf::Vector2f getPlayerPos() {
+        return direction;
+    }
+
+    sf::Vector2u getPlayerTextureSize()
+    {
+        return texture.getSize();
+    }
+
 private:
+
+    outOfWindow isOutOfWindow();
+    void move();
 
     void regenerate_mana();
     void RestartClock();
     void updatePlayerGUI();
 
+    sf::Sprite sprite;
+    sf::Texture texture;
+
+    sf::Vector2f find_direction();
+    sf::Vector2f direction{600.f, 500.f};
+
     //Hp
     int hitpointMax{}, hitpoint{};
 
     double HpPercent{};
-    int get_hpMax() const;
     //Mana
     double manaMax{}, mana{};
 
     double ManaPercent{};
-    double get_manaMax() const;
     //Time
     sf::Clock m_clock;
     sf::Time m_elapsed;

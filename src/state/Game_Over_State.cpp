@@ -14,7 +14,7 @@ int Game_Over_State::get_current_state()
     return curr_state;
 }
 
-void Game_Over_State::update()
+void Game_Over_State::update(sf::Time delta)
 {
     
 }

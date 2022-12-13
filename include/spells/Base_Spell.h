@@ -2,14 +2,11 @@
 
 #include <SFML/Graphics.hpp>
 #include "utils/resource_manager.h"
+#include "entity/player.h"
 
 /**
  * @brief base class for spells
  * 
- */
-
-/**
- * int const spell id
  */
 int const WATER_SPELL{0};
 int const EARTH_SPELL{1};
@@ -26,25 +23,25 @@ public:
     virtual ~Base_Spell () = default;
     /**
      * @brief update spell logic
-     * 
+     *
      */
-    virtual void update() = 0;
+    virtual void update(Player & player) = 0;
     /**
      * @brief render spell
-     * 
-     * @param target 
+     *
+     * @param target
      */
     virtual void render(sf::RenderTarget & target) = 0;
     /**
      * @brief Get the mana cost of spell
-     * 
-     * @return int 
+     *
+     * @return int
      */
-    virtual int get_mana() = 0;
+    virtual double get_mana() = 0;
     /**
      * @brief Get the spell damage
-     * 
-     * @return int 
+     *
+     * @return int
      */
-    virtual int get_damage() = 0;
+    virtual double get_damage() = 0;
 };

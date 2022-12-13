@@ -4,19 +4,25 @@
 
 #pragma  once
 
+#include <iostream>
 #include "spells/Fire_Spell.h"
+#include "utils/utility.h"
 
 
 Fire_Spell::Fire_Spell() : texture{Resource_Manager<sf::Texture>::load("resources/fire_spell.png")},
-    sprite{}
+                           sprite{}
 {
     sprite.setTexture(texture);
-    sprite.setOrigin(0, 0);
 }
 
-void Fire_Spell::update()
+void Fire_Spell::update(Player &player)
 {
-    sprite.setPosition(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y);
+    auto size{texture.getSize()};
+    sprite.setOrigin(size.x /2, size.y / 2);
+
+    sf::Vector2f pos = player.getPlayerPos();
+    sprite.setPosition(pos);
+    sprite.rotate(1);
 }
 
 void Fire_Spell::render(sf::RenderTarget & target)
@@ -24,12 +30,12 @@ void Fire_Spell::render(sf::RenderTarget & target)
     target.draw(sprite);
 }
 
-int Fire_Spell::get_mana()
+double Fire_Spell::get_mana()
 {
-    return 20;
+    return 0.05;
 }
 
-int Fire_Spell::get_damage()
+double Fire_Spell::get_damage()
 {
     return 50;
 }

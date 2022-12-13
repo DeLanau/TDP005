@@ -28,7 +28,7 @@ int Engine::run()
             window.close();
 
         current_state = states.at(current_state)->get_current_state();
-        states.at(current_state)->update();
+        states.at(current_state)->update(clock.restart());
         window.clear();
         states.at(current_state)->render(window);
         window.display();

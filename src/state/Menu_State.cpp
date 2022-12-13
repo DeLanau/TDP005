@@ -29,7 +29,7 @@ int Menu_State::get_current_state()
     return curr_state;
 }
 
-void Menu_State::update()
+void Menu_State::update(sf::Time delta)
 {
      if (utility::debounce(sf::Keyboard::Up) && button_select != 0)
         move_up();

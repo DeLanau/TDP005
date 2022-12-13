@@ -1,12 +1,21 @@
 #include "entity/player.h"
 #include "utils/utility.h"
 
-#include "iostream"
+
+/**
+ *               total        used        free      shared  buff/cache   available
+    Mem:       44152412    17483100    14774008      563368    11895304    25550776
+    Swap:       2097148      213792     1883356
+ * **/
+
+#include "utils/resource_manager.h"
 
 using namespace std;
 
 Player::Player()
-        : hitpointMax{100}, hitpoint{hitpointMax}, manaMax{100}, mana{99}, m_clock{}, m_elapsed{}
+        : hitpointMax{100}, hitpoint{hitpointMax}, manaMax{100}, mana{99}, m_clock{}, m_elapsed{}, direction{600.f, 500.f},
+        texture{Resource_Manager<sf::Texture>::load("resources/player.png")},
+        sprite{}
 {
     //HP
     playerHpBar.setSize(sf::Vector2f(300.f, 25.f));
@@ -23,23 +32,14 @@ Player::Player()
 
     playerManaBarBack = playerManaBar;
     playerManaBarBack.setFillColor(sf::Color(25, 25, 25, 200));
-   // this->set_mana(-1);
-}
 
-Player::~Player()
-{
-
+    sprite.setTexture(texture);
 }
 
 //Hp
 void Player::set_hp(const int amount)
 {
     hitpoint += amount;
-}
-
-int Player::get_hpMax() const
-{
-    return hitpointMax;
 }
 
 int Player::get_hp() const
@@ -51,11 +51,6 @@ int Player::get_hp() const
 double Player::get_mana() const
 {
     return mana;
-}
-
-double Player::get_manaMax() const
-{
-    return manaMax;
 }
 
 void Player::set_mana(double amount)
@@ -100,6 +95,7 @@ void Player::updatePlayerGUI()
 
 void Player::update()
 {
+    this->sprite.setPosition(this->find_direction());
     this->regenerate_mana();
     this->RestartClock();
     this->updatePlayerGUI();
@@ -114,4 +110,69 @@ void Player::renderPlayerGUI(sf::RenderTarget & target)
     //Mana
     target.draw(playerManaBarBack);
     target.draw(playerManaBar);
+}
+
+void Player::render(sf::RenderTarget &target) {
+    target.draw(sprite);
+    //std::cout << "@render player sprite" << std::endl;
+}
+
+sf::Vector2f Player::find_direction() {
+
+    auto size{texture.getSize()};
+    sprite.setOrigin(size.x /2 -1, size.y / 2);
+
+    outOfWindow limits = this->isOutOfWindow();
+
+    if (utility::debounce(sf::Keyboard::Up) && !limits.isUp) {
+        sprite.setRotation(0);
+        direction.y -= 50;
+    }
+    if (utility::debounce(sf::Keyboard::Down) && !limits.isDown) {
+        sprite.setRotation(180);
+        direction.y += 50;
+    }
+    if (utility::debounce(sf::Keyboard::Left) && !limits.isLeft) {
+        sprite.setRotation(-90);
+        direction.x -= 50;
+    }
+    if (utility::debounce(sf::Keyboard::Right) && !limits.isRight) {
+        sprite.setRotation(90);
+        direction.x += 50;
+    }
+    return direction;
+}
+
+outOfWindow Player::isOutOfWindow()
+{
+    outOfWindow limits;
+
+    if(sprite.getPosition().x > 1230.f || sprite.getPosition().x < 52.f || sprite.getPosition().y > 645.f || sprite.getPosition().y < 58.f)
+    {
+        if(sprite.getPosition().x > 1230.f)
+        {
+            sprite.setPosition(1230.f, sprite.getPosition().y);
+            limits.isRight = true;
+            return limits;
+        }
+        else if(sprite.getPosition().x < 52.f)
+        {
+            sprite.setPosition( 52.f, sprite.getPosition().y);
+            limits.isLeft = true;
+            return limits;
+        }
+        else if(sprite.getPosition().y > 645.f)
+        {
+            sprite.setPosition(sprite.getPosition().x, 645.f);
+            limits.isDown = true;
+            return limits;
+        }
+        else if(sprite.getPosition().y < 58.f)
+        {
+            sprite.setPosition(sprite.getPosition().x, 58.f);
+            limits.isUp = true;
+            return limits;
+        }
+    }
+    return limits;
 }

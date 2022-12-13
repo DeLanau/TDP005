@@ -7,10 +7,14 @@
 
 using namespace sf;
 
+// #define Fire_Spell::Fire_Spell();
+
 Button_Manager::Button_Manager() :
 font{Resource_Manager<sf::Font>::load("resources/font/toppo.ttf")},
 QQ{}, WW{}, EE{}, RR{},
-circle{}
+circle{},
+spell_activate{},
+button_id{0}
 
 {
     QQ = Text("Q", font, 62);
@@ -33,13 +37,33 @@ circle{}
 
 void Button_Manager::update()
 {
-    current_button.setColor(Color::White);
+
     if(utility::debounce(sf::Keyboard::Q))
     {
         current_button = QQ;
+        button_id = 0;
+        spell_activate = false;
+    }else if (utility::debounce(sf::Keyboard::W))
+    {
+        current_button = WW;
+        button_id = 1;
+        spell_activate = false;
     }else if (utility::debounce(sf::Keyboard::E))
     {
         current_button = EE;
+        button_id = 2;
+        spell_activate = false;
+    }else if (utility::debounce(sf::Keyboard::R))
+    {
+        current_button = RR;
+        button_id = 3;
+        spell_activate = false;
+    }
+
+    if (utility::debounce(sf::Keyboard::Space))
+    {
+        spell_activate = true;
+        current_button.setColor(Color::Yellow);
     }
 }
 
@@ -48,4 +72,3 @@ void Button_Manager::render(sf::RenderTarget &target)
    target.draw(circle);
    target.draw(current_button);
 }
-

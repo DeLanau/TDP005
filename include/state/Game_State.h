@@ -6,7 +6,7 @@
 
 #include "Base_State.h"
 #include "entity/player.h"
-#include "utils/Button_Manager.h"
+#include "spells/Spell_Manager.h"
 
 class Game_State : public Base_State
 {
@@ -15,7 +15,7 @@ public:
 
     virtual ~Game_State() = default;
 
-    virtual void update() override;
+    virtual void update(sf::Time delta) override;
 
     virtual void render(sf::RenderTarget & target) override;
 
@@ -29,9 +29,9 @@ private:
     sf::Font font;
     sf::Sprite sprite;
 
-    Spell_Manager spell_manager;
     Player player;
-    Button_Manager buttons;
+    Spell_Manager spell;
+    Button_Manager button;
 
     sf::Clock clock;
     sf::Text fps;

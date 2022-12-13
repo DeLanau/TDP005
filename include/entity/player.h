@@ -22,13 +22,13 @@ public:
      * @brief Adds the choosen parameter "amount" to the member variable "mana"
      *
     */
-    void set_hp(const int amount);
+    void set_hp(const double amount);
     /**
      * @brief gets the value of the hitpoint member variable
      *
      * @return int
     */
-    int get_hp() const;
+    double get_hp() const;
     /**
      * @brief gets the value of the mana member variable
      *
@@ -56,15 +56,32 @@ public:
         return direction;
     }
 
-    sf::Vector2u getPlayerTextureSize()
+    sf::Sprite const& get_Player_Sprite()
     {
-        return texture.getSize();
+        return sprite;
+    }
+
+    void resetPlayer(){
+        hitpoint = 100;
+        mana = 100;
+        sprite.setPosition(direction);
+    }
+
+    bool dead(){
+        if (hitpoint <= 0) {
+            resetPlayer();
+            return true;
+        }else{
+            return false;
+        }
     }
 
 private:
 
     outOfWindow isOutOfWindow();
     void move();
+
+    int speed{50};
 
     void regenerate_mana();
     void RestartClock();
@@ -77,7 +94,8 @@ private:
     sf::Vector2f direction{600.f, 500.f};
 
     //Hp
-    int hitpointMax{}, hitpoint{};
+    int hitpointMax{};
+    double hitpoint{};
 
     double HpPercent{};
     //Mana

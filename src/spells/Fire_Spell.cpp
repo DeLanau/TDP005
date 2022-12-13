@@ -22,7 +22,7 @@ void Fire_Spell::update(Player &player)
 
     sf::Vector2f pos = player.getPlayerPos();
     sprite.setPosition(pos);
-    sprite.rotate(1);
+    sprite.rotate(-1);
 }
 
 void Fire_Spell::render(sf::RenderTarget & target)

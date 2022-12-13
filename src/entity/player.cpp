@@ -37,12 +37,18 @@ Player::Player()
 }
 
 //Hp
-void Player::set_hp(const int amount)
+void Player::set_hp(const double amount)
 {
     hitpoint += amount;
+   /** if ( amount > 0) {
+        sprite.setColor(sf::Color::Green);
+    }
+    else {
+        sprite.setColor(sf::Color::Red);
+    }**/
 }
 
-int Player::get_hp() const
+double Player::get_hp() const
 {
     return hitpoint;
 }

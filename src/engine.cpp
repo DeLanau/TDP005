@@ -14,7 +14,7 @@ Engine::Engine() :
 
     states.insert(std::pair<int, std::unique_ptr<Base_State>>({MENU_STATE, std::make_unique<Menu_State>()}));
     states.insert(std::pair<int, std::unique_ptr<Base_State>>({GAME_STATE, std::make_unique<Game_State>()}));
-    //  states.insert(std::pair<int, std::unique_ptr<Base_State>>({GAME_OVER_STATE, std::make_unique<Game_Over_State>()}));
+    states.insert(std::pair<int, std::unique_ptr<Base_State>>({GAME_OVER_STATE, std::make_unique<Game_Over_State>()}));
 
 }
 

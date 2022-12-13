@@ -5,7 +5,7 @@
 
 int const MENU_STATE{0};
 int const GAME_STATE{1};
-int const GAME_OVER_STATE{3};
+int const GAME_OVER_STATE{2};
 int const QUIT_STATE{404};
 
 class Base_State

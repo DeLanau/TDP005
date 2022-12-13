@@ -21,6 +21,9 @@ public:
 
     virtual double get_damage() override;
 
+    virtual sf::Sprite get_sprite() override {
+        return sprite;
+    }
 private:
     unsigned int mana{}, damage{};
     int x{}, y{};

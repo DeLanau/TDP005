@@ -30,7 +30,20 @@ void Spell_Manager::run_spells(sf::RenderTarget &target, Player &player) {
             case 2:
                 fire.update(player);
                 fire.render(target);
-                player.set_mana(-fire.get_mana());
+                if(player.get_hp() >= 20){
+                    player.set_hp(-fire.get_mana());
+                }else {
+                    player.set_mana(-fire.get_mana());
+                }
+        }
+    }
+}
+
+sf::Sprite Spell_Manager::get_sprite(Player & player) {
+    if(buttons.get_spell_active() && player.get_mana() >= 1) {
+        switch (buttons.get_current_button_id()) {
+            case 2:
+                return fire.get_sprite();
         }
     }
 }

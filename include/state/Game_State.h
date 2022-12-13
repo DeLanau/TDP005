@@ -7,6 +7,7 @@
 #include "Base_State.h"
 #include "entity/player.h"
 #include "spells/Spell_Manager.h"
+#include "entity/enemyHandler.h"
 
 class Game_State : public Base_State
 {
@@ -25,6 +26,8 @@ public:
 private:
     unsigned int curr_state{1};
 
+    bool end_game{false};
+
     sf::Texture texture;
     sf::Font font;
     sf::Sprite sprite;
@@ -32,6 +35,7 @@ private:
     Player player;
     Spell_Manager spell;
     Button_Manager button;
+    HandleEnemies enemys;
 
     sf::Clock clock;
     sf::Text fps;

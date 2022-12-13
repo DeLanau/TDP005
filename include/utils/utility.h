@@ -24,4 +24,6 @@ bool debounce(sf::Keyboard::Key key);
  */
 void debug_print(std::string str);
 
+int randomNumber(int const& x, int const& y);
+
 }

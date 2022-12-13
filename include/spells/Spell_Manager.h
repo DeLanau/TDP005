@@ -25,6 +25,8 @@ public:
 
     void run_spells(sf::RenderTarget & target, Player & player);
 
+    sf::Sprite get_sprite(Player & player);
+
 private:
 
     Button_Manager buttons;

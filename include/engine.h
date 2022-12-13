@@ -23,7 +23,7 @@ public:
      * @return int 
      */
     int run();
-    
+
 private:
     int current_state;
     sf::RenderWindow window;

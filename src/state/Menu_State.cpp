@@ -31,7 +31,8 @@ int Menu_State::get_current_state()
 
 void Menu_State::update(sf::Time delta)
 {
-     if (utility::debounce(sf::Keyboard::Up) && button_select != 0)
+    button_state = MENU_STATE;
+    if (utility::debounce(sf::Keyboard::Up) && button_select != 0)
         move_up();
     else if (utility::debounce(sf::Keyboard::Down) && button_select !=  1)
         move_down();

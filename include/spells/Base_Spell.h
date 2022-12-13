@@ -44,4 +44,6 @@ public:
      * @return int
      */
     virtual double get_damage() = 0;
+
+    virtual sf::Sprite get_sprite() = 0;
 };

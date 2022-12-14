@@ -7,6 +7,7 @@
 #include <iostream>
 #include "spells/Fire_Spell.h"
 #include "utils/utility.h"
+#include "config.h"
 
 
 Fire_Spell::Fire_Spell() : texture{Resource_Manager<sf::Texture>::load("resources/fire_spell.png")},
@@ -32,7 +33,7 @@ void Fire_Spell::render(sf::RenderTarget & target)
 
 double Fire_Spell::get_mana()
 {
-    return 0.05;
+    return config::spell::fire_mana;
 }
 
 double Fire_Spell::get_damage()

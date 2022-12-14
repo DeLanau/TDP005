@@ -9,11 +9,13 @@
  * **/
 
 #include "utils/resource_manager.h"
+#include "config.h"
 
 using namespace std;
 
 Player::Player()
-        : hitpointMax{100}, hitpoint{hitpointMax}, manaMax{100}, mana{99}, m_clock{}, m_elapsed{}, direction{600.f, 500.f},
+        : hitpointMax{static_cast<int>(config::player::hp)}, hitpoint{config::player::hp}, manaMax{config::player::mana},
+        mana{config::player::mana-1}, m_clock{}, m_elapsed{}, direction{600.f, 500.f},
         texture{Resource_Manager<sf::Texture>::load("resources/player.png")},
         sprite{}
 {
@@ -68,12 +70,12 @@ void Player::regenerate_mana()
 {
     float regenTime = 1.0f;
 
-    if (m_elapsed.asSeconds() >= regenTime && mana < 100)
+    if (m_elapsed.asSeconds() >= regenTime && mana < config::player::mana)
     {
         mana += 1.0;
-        if (mana > 100)
+        if (mana > config::player::mana)
         {
-            mana = 100;
+            mana = config::player::mana;
         }
 
         ManaPercent = (mana / manaMax);
@@ -132,19 +134,19 @@ sf::Vector2f Player::find_direction() {
 
     if (utility::debounce(sf::Keyboard::Up) && !limits.isUp) {
         sprite.setRotation(0);
-        direction.y -= 50;
+        direction.y -= config::player::speed;
     }
     if (utility::debounce(sf::Keyboard::Down) && !limits.isDown) {
         sprite.setRotation(180);
-        direction.y += 50;
+        direction.y += config::player::speed;
     }
     if (utility::debounce(sf::Keyboard::Left) && !limits.isLeft) {
         sprite.setRotation(-90);
-        direction.x -= 50;
+        direction.x -= config::player::speed;
     }
     if (utility::debounce(sf::Keyboard::Right) && !limits.isRight) {
         sprite.setRotation(90);
-        direction.x += 50;
+        direction.x += config::player::speed;
     }
     return direction;
 }

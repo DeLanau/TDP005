@@ -50,13 +50,19 @@ void HandleEnemies::rendering(sf::RenderTarget & target, sf::Vector2i pos, Playe
             if (current_enemy->getCircle().getGlobalBounds().intersects(player.get_Player_Sprite().getGlobalBounds()))
                     player.set_hp(-1);
 
-            if(current_enemy->getCircle().getGlobalBounds().intersects(spells.get_sprite(player).getGlobalBounds()))
-                current_enemy->setInvertLocation(-1, -1);
+            if(current_enemy->getCircle().getGlobalBounds().intersects(spells.get_sprite(player).getGlobalBounds()) && spells.get_current_spell() == 1)
+                current_enemy->setLocation(-current_enemy->getxMovement(), -current_enemy->getyMovement());
         }
 
 
+        for (size_t i = 0; i < enemy_container.size(); i++) {
+                if(enemy_container[i]->getCircle().getGlobalBounds().intersects(spells.get_sprite(player).getGlobalBounds())
+                && (spells.get_current_spell() == 2 || spells.get_current_spell() == 3)) {
+                    delete_enemy(i);
+                }
+            }
 
-        if (elapsed_time > render_time) {
+            if (elapsed_time > render_time) {
             render_time += sf::milliseconds(35);
         }
         if (elapsed_time > enemy_create_time) {

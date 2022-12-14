@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "utils/resource_manager.h"
+#include "config.h"
 
 int const MENU_STATE{0};
 int const GAME_STATE{1};

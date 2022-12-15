@@ -65,7 +65,8 @@ private:
 
   std::vector<Enemy*> enemy_container;
   std::vector<sf::Texture> textures;
-  sf::Time render_time{sf::milliseconds(35)};
+  int updateTime{35};
+  sf::Time render_time{sf::milliseconds(updateTime)};
   sf::Time enemy_create_time{sf::milliseconds(1000)};
   sf::Clock clock;
 };

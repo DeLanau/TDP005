@@ -75,9 +75,11 @@ void HandleEnemies::rendering(sf::RenderTarget & target, sf::Vector2i pos, Playe
     }
 
     if (elapsed_time > render_time) {
-      render_time += sf::milliseconds(35);
+      render_time += sf::milliseconds(updateTime);
     }
     if (elapsed_time > enemy_create_time) {
+      if (enemy_container.size() == 1)
+	std::cout << elapsed_time.asSeconds() << std::endl;
       createNewEnemy();
       enemy_create_time += sf::milliseconds(utility::randomNumber(2500, 5000));
     }

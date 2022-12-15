@@ -56,6 +56,7 @@ public:
     enemy_container.clear();
   }
 
+
 private:
 
   sf::Font font;
@@ -63,6 +64,7 @@ private:
   int score{};
   sf::RectangleShape box;
 
+  bool firstEnemy{true};
   std::vector<Enemy*> enemy_container;
   std::vector<sf::Texture> textures;
   int updateTime{35};

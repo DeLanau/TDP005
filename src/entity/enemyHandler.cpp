@@ -78,8 +78,11 @@ void HandleEnemies::rendering(sf::RenderTarget & target, sf::Vector2i pos, Playe
       render_time += sf::milliseconds(updateTime);
     }
     if (elapsed_time > enemy_create_time) {
-      if (enemy_container.size() == 1)
-	std::cout << elapsed_time.asSeconds() << std::endl;
+      if (firstEnemy)
+	{
+	  clock.restart();
+	  firstEnemy = false;
+	}
       createNewEnemy();
       enemy_create_time += sf::milliseconds(utility::randomNumber(2500, 5000));
     }
@@ -95,3 +98,4 @@ void HandleEnemies::load_enemy_texture() {
   textures.push_back(Resource_Manager<sf::Texture>::load("resources/enemy1.png"));
   textures.push_back(Resource_Manager<sf::Texture>::load("resources/enemy2.png"));
 }
+

@@ -24,6 +24,15 @@ bool debounce(sf::Keyboard::Key key);
  */
 void debug_print(std::string str);
 
+  /**
+   * @brief returns random number between parameters
+   *
+   * @param x int
+   *
+   * @param y int
+   *
+   * @return int
+   */
 int randomNumber(int const& x, int const& y);
 
 }

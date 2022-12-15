@@ -16,39 +16,44 @@ int const WIND_SPELL{3};
 class Base_Spell
 {
 public:
-    /**
-     * @brief Destroy the Spell_Base object
-     * 
-     */
-    virtual ~Base_Spell () = default;
-    /**
-     * @brief update spell logic
-     *
-     */
-    virtual void update(Player & player) = 0;
-    /**
-     * @brief render spell
-     *
-     * @param target
-     */
-    virtual void render(sf::RenderTarget & target) = 0;
-    /**
-     * @brief Get the mana cost of spell
-     *
-     * @return int
-     */
-    virtual double get_mana() = 0;
-    /**
-     * @brief Get the spell damage
-     *
-     * @return int
-     */
-    virtual double get_damage() = 0;
+  /**
+   * @brief Destroy the Spell_Base object
+   * 
+   */
+  virtual ~Base_Spell () = default;
+  /**
+   * @brief update spell logic
+   *
+   */
+  virtual void update(Player & player) = 0;
+  /**
+   * @brief render spell
+   *
+   * @param target
+   */
+  virtual void render(sf::RenderTarget & target) = 0;
+  /**
+   * @brief Get the mana cost of spell
+   *
+   * @return int
+   */
+  virtual double get_mana() = 0;
+  /**
+   * @brief Get the spell damage
+   *
+   * @return int
+   */
+  virtual double get_damage() = 0;
 
-    virtual sf::Sprite get_sprite() = 0;
+  /**
+   * @brief get sprite
+   *
+   * @return sf::Sprite
+   */
+  virtual sf::Sprite get_sprite() = 0;
 
 protected:
-    sf::Clock clock;
-    sf::Time render_time{sf::milliseconds(300)};
+  sf::Clock clock;
+  sf::Time render_time{sf::milliseconds(300)};
 
 };

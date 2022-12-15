@@ -72,14 +72,14 @@ double Enemy::getyMovement()
 void Enemy::setMovement(sf::Vector2i pos)
 {
     if (pos.y > location.y + circle.getRadius())
-        yMovement = 1;
+        yMovement = 2;
     else if (pos.y < location.y + circle.getRadius())
-        yMovement = -1;
+        yMovement = -2;
 
     if (pos.x > location.x + circle.getRadius())
-        xMovement = 1;
+        xMovement = 2;
     else if (pos.x < location.x + circle.getRadius())
-        xMovement = -1;
+        xMovement = -2;
 
     if (pos.x == location.x + circle.getRadius())
         xMovement = 0;

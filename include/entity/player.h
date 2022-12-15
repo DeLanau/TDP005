@@ -4,104 +4,127 @@
 
 struct outOfWindow
 {
-    bool isLeft = false;
-    bool isRight = false;
-    bool isUp = false;
-    bool isDown = false;
+  bool isLeft = false;
+  bool isRight = false;
+  bool isUp = false;
+  bool isDown = false;
 };
 
 class Player
 {
 public:
-    /**
-     * @brief Initialises player object variablesS
-     *
-    */
-    Player();
-    /**
-     * @brief Adds the choosen parameter "amount" to the member variable "mana"
-     *
-    */
-    void set_hp(const double amount);
-    /**
-     * @brief gets the value of the hitpoint member variable
-     *
-     * @return int
-    */
-    double get_hp() const;
-    /**
-     * @brief gets the value of the mana member variable
-     *
-     * @return double
-    */
-    double get_mana() const;
-    /**
-     * @brief Adds the choosen parameter "amount" to the member variable "mana".
-     *
-    */
-    void set_mana(double amount);
-    /**
-     * @brief updates player
-     */
-    void update();
-    /**
-     * @brief Renders the player Graphical User InterFace.
-     *
-    */
-    void renderPlayerGUI(sf::RenderTarget & target);
+  /**
+   * @brief Initialises player object variablesS
+   *
+   */
+  Player();
+  /**
+   * @brief Adds the choosen parameter "amount" to the member variable "mana"
+   *
+   */
+  void set_hp(const double amount);
+  /**
+   * @brief gets the value of the hitpoint member variable
+   *
+   * @return int
+   */
+  double get_hp() const;
+  /**
+   * @brief gets the value of the mana member variable
+   *
+   * @return double
+   */
+  double get_mana() const;
+  /**
+   * @brief Adds the choosen parameter "amount" to the member variable "mana".
+   *
+   */
+  void set_mana(double amount);
+  /**
+   * @brief updates player
+   */
+  void update();
+  /**
+   * @brief Renders the player Graphical User InterFace.
+   *
+   */
+  void renderPlayerGUI(sf::RenderTarget & target);
 
-    void render(sf::RenderTarget & target);
+  /**
+   * @brief draw player
+   *
+   * @param sf::RenderTarget
+   */
+  void render(sf::RenderTarget & target);
 
-    sf::Vector2f getPlayerPos() {
-        return direction;
+  /**
+   * @brief get player position
+   *
+   * @return sf::Vector2f
+   */
+  sf::Vector2f getPlayerPos() {
+    return direction;
+  }
+
+  /**
+   * @brief get player sprite
+   *
+   * @return sf::Sprite
+   */
+  sf::Sprite const& get_Player_Sprite()
+  {
+    return sprite;
+  }
+
+    /**
+   * @brief reset player values and position
+   */
+  void resetPlayer(){
+    hitpoint = 100;
+    mana = 100;
+    sprite.setPosition(direction);
+  }
+
+  /**
+   * @brief checks if player is dead
+   *
+   * @return bool
+   */
+  bool dead(){
+    if (hitpoint <= 0) {
+      resetPlayer();
+      return true;
+    }else{
+      return false;
     }
-
-    sf::Sprite const& get_Player_Sprite()
-    {
-        return sprite;
-    }
-
-    void resetPlayer(){
-        hitpoint = 100;
-        mana = 100;
-        sprite.setPosition(direction);
-    }
-
-    bool dead(){
-        if (hitpoint <= 0) {
-            resetPlayer();
-            return true;
-        }else{
-            return false;
-        }
-    }
+  }
 
 private:
 
-    outOfWindow isOutOfWindow();
+  outOfWindow isOutOfWindow();
 
-    void regenerate_mana();
-    void RestartClock();
-    void updatePlayerGUI();
+  void regenerate_mana();
+  void RestartClock();
+  void updatePlayerGUI();
 
-    sf::Sprite sprite;
-    sf::Texture texture;
+  sf::Sprite sprite;
+  sf::Texture texture;
 
-    sf::Vector2f find_direction();
-    sf::Vector2f direction{600.f, 500.f};
+  sf::Vector2f find_direction();
+  sf::Vector2f direction{600.f, 500.f};
 
-    //Hp
-    int hitpointMax{};
-    double hitpoint{};
+  //Hp
+  int hitpointMax{};
+  double hitpoint{};
 
-    double HpPercent{};
-    //Mana
-    double manaMax{}, mana{};
+  double HpPercent{};
+  //Mana
+  double manaMax{}, mana{};
 
-    double ManaPercent{};
-    //Time
-    sf::Clock m_clock;
-    sf::Time m_elapsed;
-    //GUI
-    sf::RectangleShape playerHpBar, playerHpBarBack, playerManaBar, playerManaBarBack;
+  double ManaPercent{};
+  //Time
+  sf::Clock m_clock;
+  sf::Time m_elapsed;
+  //GUI
+  sf::RectangleShape playerHpBar, playerHpBarBack, playerManaBar, playerManaBarBack;
 };

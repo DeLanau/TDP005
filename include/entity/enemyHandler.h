@@ -46,6 +46,12 @@ public:
     }
 
 private:
+
+    sf::Font font;
+    sf::Text text;
+    int score{};
+    sf::RectangleShape box;
+
     std::vector<Enemy*> enemy_container;
     std::vector<sf::Texture> textures;
     sf::Time render_time{sf::milliseconds(35)};

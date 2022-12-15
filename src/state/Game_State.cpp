@@ -48,9 +48,9 @@ void Game_State::render(RenderTarget & target)
 {
     target.draw(sprite);
     spell.render(target, player);
-    spell.run_spells(target, player);
     player.renderPlayerGUI(target);
     player.render(target);
+    spell.run_spells(target, player);
     target.draw(fps);
     enemys.rendering(target, static_cast<sf::Vector2i>(player.getPlayerPos()), player, spell, end_game);
 }

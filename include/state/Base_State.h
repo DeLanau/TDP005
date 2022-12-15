@@ -61,4 +61,7 @@ public:
 
 private:
     unsigned int curr_state{2};
+    sf::Font font;
+    sf::Text text;
+    sf::Text press;
 };

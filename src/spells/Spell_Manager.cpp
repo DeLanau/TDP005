@@ -39,7 +39,7 @@ void Spell_Manager::run_spells(sf::RenderTarget &target, Player &player) {
             case 1:
                 earth.update(player);
                 earth.render(target);
-                player.set_mana(-earth.get_mana());
+               // player.set_mana(-earth.get_mana());
                 break;
             case 2:
                 fire.update(player);

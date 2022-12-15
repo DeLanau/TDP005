@@ -79,9 +79,6 @@ public:
 private:
 
     outOfWindow isOutOfWindow();
-    void move();
-
-    int speed{50};
 
     void regenerate_mana();
     void RestartClock();

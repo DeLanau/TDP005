@@ -1,8 +1,13 @@
 #include "entity/enemyHandler.h"
 #include <iostream>
 
-HandleEnemies::HandleEnemies() {
+HandleEnemies::HandleEnemies() :
+font{Resource_Manager<sf::Font>::load("resources/font/toppo.ttf")}
+{
     load_enemy_texture();
+    box.setSize(sf::Vector2f{200, 40});
+    box.setFillColor(sf::Color(25, 25, 25, 200));
+    box.setPosition(1060, 20);
 }
 
 HandleEnemies::~HandleEnemies() {
@@ -37,6 +42,12 @@ std::vector<Enemy*> HandleEnemies::getEnemies()
 
 void HandleEnemies::rendering(sf::RenderTarget & target, sf::Vector2i pos, Player & player, Spell_Manager & spells, bool const& b)
 {
+    text = sf::Text("Score: " + std::to_string(score), font, 32);
+    text.setPosition(1100, 20);
+    target.draw(box);
+    target.draw(text);
+
+
     if(!b) {
         sf::Time elapsed_time = clock.getElapsedTime();
 
@@ -58,6 +69,7 @@ void HandleEnemies::rendering(sf::RenderTarget & target, sf::Vector2i pos, Playe
         for (size_t i = 0; i < enemy_container.size(); i++) {
                 if(enemy_container[i]->getCircle().getGlobalBounds().intersects(spells.get_sprite(player).getGlobalBounds())
                 && (spells.get_current_spell() == 2 || spells.get_current_spell() == 3)) {
+                    score += 10;
                     delete_enemy(i);
                 }
             }

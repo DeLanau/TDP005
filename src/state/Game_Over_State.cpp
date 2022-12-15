@@ -6,18 +6,22 @@
 using namespace sf; 
 
 Game_Over_State::Game_Over_State() :
-        font{Resource_Manager<sf::Font>::load("resources/font/toppo.ttf")}
+        font{Resource_Manager<sf::Font>::load("resources/font/toppo.ttf")},
+        texture{Resource_Manager<sf::Texture>::load("resources/dead.png")}
 {
     std::cout << "Game over state on" << std::endl;
 
     text = sf::Text("GAME OVER", font, 82);
-    auto bounds{text.getGlobalBounds()};
-    text.setPosition((1280 - bounds.width )/ 2, 300);
+    text.setPosition((1280 - text.getGlobalBounds().width )/ 2, 300);
     text.setColor(sf::Color::Red);
 
     press = sf::Text("Press enter", font, 42);
-    auto bounds2{press.getGlobalBounds()};
-    press.setPosition((1280 - bounds2.width )/ 2, 400);
+    press.setPosition((1280 - press.getGlobalBounds().width )/ 2, 400);
+
+    dead.setTexture(texture);
+    dead.setOrigin(0, 0);
+    dead.scale(7, 7);
+    dead.setPosition((1280 - dead.getGlobalBounds().width )/ 2, 30);
 
 }
 
@@ -35,6 +39,7 @@ void Game_Over_State::render(RenderTarget & target)
 {
     target.draw(text);
     target.draw(press);
+    target.draw(dead);
 }
 
 int Game_Over_State::get_next_state()

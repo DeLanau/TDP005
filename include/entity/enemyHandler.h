@@ -5,7 +5,6 @@
 #include "../utils/resource_manager.h"
 #include "../utils/utility.h"
 #include "player.h"
-#include "spells/Spell_Manager.h"
 
 class HandleEnemies
 {
@@ -31,7 +30,7 @@ public:
    *
    * @param clock
    */
-  void rendering(sf::RenderTarget & target, sf::Vector2i pos, Player & player, Spell_Manager & spells, bool const& b);
+  void rendering(sf::RenderTarget & target, sf::Vector2i pos, Player & player, bool const& b);
 
   /**
    * @brief removes enemy

@@ -40,7 +40,7 @@ std::vector<Enemy*> HandleEnemies::getEnemies()
   return enemy_container;
 }
 
-void HandleEnemies::rendering(sf::RenderTarget & target, sf::Vector2i pos, Player & player, Spell_Manager & spells, bool const& b)
+void HandleEnemies::rendering(sf::RenderTarget & target, sf::Vector2i pos, Player & player, bool const& b)
 {
   text = sf::Text("Score: " + std::to_string(score), font, 32);
   text.setPosition(1100, 20);
@@ -58,21 +58,21 @@ void HandleEnemies::rendering(sf::RenderTarget & target, sf::Vector2i pos, Playe
 	current_enemy->setLocation(current_enemy->getxMovement(), current_enemy->getyMovement());
       }
 
-      if (current_enemy->getCircle().getGlobalBounds().intersects(player.get_Player_Sprite().getGlobalBounds()))
-	player.set_hp(-1);
+     /** if (current_enemy->getCircle().getGlobalBounds().intersects(player.get_Player_Sprite().getGlobalBounds()))
+	    player.set_hp(-1);
 
       if(current_enemy->getCircle().getGlobalBounds().intersects(spells.get_sprite(player).getGlobalBounds()) && spells.get_current_spell() == 1)
-	current_enemy->setLocation(-current_enemy->getxMovement(), -current_enemy->getyMovement());
+	    current_enemy->setLocation(-current_enemy->getxMovement(), -current_enemy->getyMovement()); **/
     }
 
 
-    for (size_t i = 0; i < enemy_container.size(); i++) {
+    /**for (size_t i = 0; i < enemy_container.size(); i++) {
       if(enemy_container[i]->getCircle().getGlobalBounds().intersects(spells.get_sprite(player).getGlobalBounds())
 	 && (spells.get_current_spell() == 2 || spells.get_current_spell() == 3)) {
 	score += 10;
 	delete_enemy(i);
       }
-    }
+    }**/
 
     if (elapsed_time > render_time) {
       render_time += sf::milliseconds(updateTime);

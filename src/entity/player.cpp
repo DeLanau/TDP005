@@ -101,7 +101,7 @@ void Player::updatePlayerGUI()
 
 }
 
-void Player::update()
+void Player::update(Player & player, Button_Manager & button)
 {
     this->sprite.setPosition(this->find_direction());
     this->regenerate_mana();
@@ -120,9 +120,9 @@ void Player::renderPlayerGUI(sf::RenderTarget & target)
     target.draw(playerManaBar);
 }
 
-void Player::render(sf::RenderTarget &target) {
+void Player::render(sf::RenderTarget &target, Player & player, Button_Manager & button) {
+    this->renderPlayerGUI(target);
     target.draw(sprite);
-    //std::cout << "@render player sprite" << std::endl;
 }
 
 sf::Vector2f Player::find_direction() {

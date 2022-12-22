@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SFML/Graphics.hpp"
+#include "Game_Object.h"
 
 struct outOfWindow
 {
@@ -10,7 +11,7 @@ struct outOfWindow
   bool isDown = false;
 };
 
-class Player
+class Player : public Game_Object
 {
 public:
   /**
@@ -43,7 +44,7 @@ public:
   /**
    * @brief updates player
    */
-  void update();
+  void update(Player & player, Button_Manager & button);
   /**
    * @brief Renders the player Graphical User InterFace.
    *
@@ -55,7 +56,7 @@ public:
    *
    * @param sf::RenderTarget
    */
-  void render(sf::RenderTarget & target);
+  virtual void render(sf::RenderTarget & target, Player & player, Button_Manager & button) override;
 
   /**
    * @brief get player position

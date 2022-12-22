@@ -3,17 +3,9 @@
 #include <SFML/Graphics.hpp>
 #include "utils/resource_manager.h"
 #include "entity/player.h"
+#include "utils/Button_Manager.h"
 
-/**
- * @brief base class for spells
- * 
- */
-int const WATER_SPELL{0};
-int const EARTH_SPELL{1};
-int const FIRE_SPELL{2};
-int const WIND_SPELL{3};
-
-class Base_Spell
+class Base_Spell : public Game_Object
 {
 public:
   /**
@@ -21,17 +13,11 @@ public:
    * 
    */
   virtual ~Base_Spell () = default;
-  /**
-   * @brief update spell logic
-   *
-   */
-  virtual void update(Player & player) = 0;
-  /**
-   * @brief render spell
-   *
-   * @param target
-   */
-  virtual void render(sf::RenderTarget & target) = 0;
+
+  virtual void update(Player &player, Button_Manager & button) = 0;
+
+  virtual void render(sf::RenderTarget &target, Player &player, Button_Manager & button) = 0;
+
   /**
    * @brief Get the mana cost of spell
    *
@@ -55,5 +41,5 @@ public:
 protected:
   sf::Clock clock;
   sf::Time render_time{sf::milliseconds(300)};
-
+  bool do_render{false};
 };

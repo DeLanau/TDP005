@@ -16,19 +16,27 @@ Fire_Spell::Fire_Spell() : texture{Resource_Manager<sf::Texture>::load("resource
     sprite.setTexture(texture);
 }
 
-void Fire_Spell::update(Player &player)
+void Fire_Spell::update(Player &player, Button_Manager & button)
 {
     auto size{texture.getSize()};
     sprite.setOrigin(size.x /2, size.y / 2);
-
-    sf::Vector2f pos = player.getPlayerPos();
-    sprite.setPosition(pos);
-    sprite.rotate(-1);
+    if(button.get_spell_active() && player.get_mana() >= 1 && button.get_current_button_id() == 2) {
+        sf::Vector2f pos = player.getPlayerPos();
+        sprite.setPosition(pos);
+        sprite.rotate(-1);
+        if(player.get_hp() >= 20){
+            player.set_hp(-this->get_mana());
+        }else {
+            player.set_mana(-this->get_mana());
+        }
+    }
 }
 
-void Fire_Spell::render(sf::RenderTarget & target)
+void Fire_Spell::render(sf::RenderTarget & target, Player & player, Button_Manager & button)
 {
-    target.draw(sprite);
+    if(button.get_spell_active() && player.get_mana() >= 1 && button.get_current_button_id() == 2) {
+        target.draw(sprite);
+    }
 }
 
 double Fire_Spell::get_mana()

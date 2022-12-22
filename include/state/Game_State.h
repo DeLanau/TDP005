@@ -6,8 +6,8 @@
 
 #include "Base_State.h"
 #include "entity/player.h"
-#include "spells/Spell_Manager.h"
 #include "entity/enemyHandler.h"
+#include "utils/Button_Manager.h"
 
 class Game_State : public Base_State
 {
@@ -33,9 +33,10 @@ private:
     sf::Sprite sprite;
 
     Player player;
-    Spell_Manager spell;
     Button_Manager button;
     HandleEnemies enemys;
+
+    std::vector<Game_Object*> sprites;
 
     sf::Clock clock;
     sf::Text fps;

@@ -9,9 +9,9 @@ public:
 
     virtual ~Earth_Spell() = default;
 
-    virtual void update(Player & player) override;
+    virtual void update(Player &player, Button_Manager & button) override;
 
-    virtual void render(sf::RenderTarget & target) override;
+    virtual void render(sf::RenderTarget &target, Player &player, Button_Manager & button) override;
 
     virtual double get_mana() override;
 

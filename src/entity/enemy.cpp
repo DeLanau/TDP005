@@ -44,6 +44,9 @@ bool Enemy::update(Player &player, Button_Manager &button, std::vector<Game_Obje
     sf::Time elapsed_time = clock.getElapsedTime();
     if (elapsed_time > render_time) {
         this->setLocation(this->getxMovement(), this->getyMovement());
+	if (circle.getGlobalBounds().intersects(player.getGlobalBounds())){
+	  player.set_hp(-1);
+    }
     }
     sf::Vector2i pos{static_cast<sf::Vector2i>(player.getPlayerPos())};
     circle.setPosition(location);
@@ -53,9 +56,7 @@ bool Enemy::update(Player &player, Button_Manager &button, std::vector<Game_Obje
         render_time += sf::milliseconds(updateTime);
     }
 
-    if (circle.getGlobalBounds().intersects(player.getGlobalBounds())){
-        player.set_hp(-1);
-    }
+
     return true;
 }
 

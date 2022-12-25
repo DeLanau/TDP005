@@ -27,11 +27,11 @@ sprite{}
     game_objs.push_back(new Earth_Spell());
     game_objs.push_back(new Fire_Spell());
     game_objs.push_back(new Wind_Spell());
-    game_objs.push_back(new Enemy(25, Resource_Manager<sf::Texture>::load("resources/enemy0.png")));
-    game_objs.push_back(new Enemy(30, Resource_Manager<sf::Texture>::load("resources/enemy1.png")));
-    game_objs.push_back(new Enemy(35, Resource_Manager<sf::Texture>::load("resources/enemy2.png")));
 
     //TODO load enemy textures
+    textures.push_back(Resource_Manager<sf::Texture>::load("resources/enemy0.png"));
+    textures.push_back(Resource_Manager<sf::Texture>::load("resources/enemy1.png"));
+    textures.push_back(Resource_Manager<sf::Texture>::load("resources/enemy2.png"));
 }
 
 int Game_State::get_current_state()
@@ -48,8 +48,23 @@ void Game_State::update(sf::Time delta)
     button.update();
 
     check_objs();
-    game_objs.push_back(new Enemy(35, Resource_Manager<sf::Texture>::load("resources/enemy2.png")));
+
+
     //TODO push new enemies med clockan
+
+    if (firstEnemy)
+      {
+	enemyClock.restart();
+	firstEnemy = false;
+      }
+    
+    sf::Time elapsed = enemyClock.getElapsedTime();
+    
+    if (elapsed > create_time)
+      {
+	game_objs.push_back(new Enemy(utility::randomNumber(25, 35), textures[utility::randomNumber(0, 2)]));
+	create_time+= sf::milliseconds(utility::randomNumber(1000, 3000));
+      }
 
     for (auto &s : game_objs)
         s->update(player, button, game_objs);
@@ -73,6 +88,12 @@ void Game_State::render(RenderTarget & target)
         s->render(target, player, button);
 
     target.draw(fps);
+
+    text = sf::Text("Score: " + std::to_string(score), font, 32);
+    text.setPosition(1100, 20);
+    target.draw(box);
+    target.draw(text);
+
     //enemys.rendering(target, static_cast<sf::Vector2i>(player.getPlayerPos()), player,  end_game);
 }
 
@@ -80,6 +101,9 @@ int Game_State::get_next_state()
 {
     if(end_game) {
         player.resetPlayer();
+	firstEnemy = true;
+	score = 0;
+	create_time = sf::milliseconds(0);
         end_game = false;
         return GAME_OVER_STATE;
     }
@@ -93,6 +117,7 @@ void Game_State::check_objs() {
             std::cout << "delete obj " << typeid(*game_objs[i]).name() << std::endl;
             game_objs.erase(game_objs.begin() + i);
             i--;
+	    score += 10;
         }
     }
 }

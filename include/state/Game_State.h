@@ -38,10 +38,18 @@ private:
     HandleEnemies enemys;
 
     std::vector<Game_Object*> game_objs;
-
+  
+    bool firstEnemy{true};
+    std::vector<sf::Texture> textures;
+    sf::Clock enemyClock;
+    sf::Time create_time{sf::milliseconds(1000)};
+  
     sf::Clock clock;
     sf::Text fps;
 
     void check_objs();
 
+  sf::Text text;
+  int score{};
+  sf::RectangleShape box;
 };

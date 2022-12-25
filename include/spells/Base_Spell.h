@@ -14,9 +14,13 @@ public:
    */
   virtual ~Base_Spell () = default;
 
-  virtual void update(Player &player, Button_Manager & button) = 0;
+  virtual bool update(Player &player, Button_Manager & button, std::vector<Game_Object*> objs) = 0;
 
   virtual void render(sf::RenderTarget &target, Player &player, Button_Manager & button) = 0;
+
+  virtual sf::FloatRect getGlobalBounds() = 0;
+
+  virtual const std::string name() = 0;
 
   /**
    * @brief Get the mana cost of spell
@@ -30,13 +34,6 @@ public:
    * @return int
    */
   virtual double get_damage() = 0;
-
-  /**
-   * @brief get sprite
-   *
-   * @return sf::Sprite
-   */
-  virtual sf::Sprite get_sprite() = 0;
 
 protected:
   sf::Clock clock;

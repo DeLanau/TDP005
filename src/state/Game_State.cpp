@@ -21,12 +21,17 @@ sprite{}
     sprite.setOrigin(0, 0);
     fps.setPosition(1280, 100);
 
-    sprites.push_back(&player);
+    game_objs.push_back(&player);
 
-    sprites.push_back(new Water_Spell());
-    sprites.push_back(new Earth_Spell());
-    sprites.push_back(new Fire_Spell());
-    sprites.push_back(new Wind_Spell());
+    game_objs.push_back(new Water_Spell());
+    game_objs.push_back(new Earth_Spell());
+    game_objs.push_back(new Fire_Spell());
+    game_objs.push_back(new Wind_Spell());
+    game_objs.push_back(new Enemy(25, Resource_Manager<sf::Texture>::load("resources/enemy0.png")));
+    game_objs.push_back(new Enemy(30, Resource_Manager<sf::Texture>::load("resources/enemy1.png")));
+    game_objs.push_back(new Enemy(35, Resource_Manager<sf::Texture>::load("resources/enemy2.png")));
+
+    //TODO load enemy textures
 }
 
 int Game_State::get_current_state()
@@ -42,8 +47,12 @@ void Game_State::update(sf::Time delta)
 
     button.update();
 
-    for (auto s : sprites)
-        s->update(player, button);
+    check_objs();
+    game_objs.push_back(new Enemy(35, Resource_Manager<sf::Texture>::load("resources/enemy2.png")));
+    //TODO push new enemies med clockan
+
+    for (auto &s : game_objs)
+        s->update(player, button, game_objs);
 
     float lastTime = 0.f;
     float currentTime = clock.restart().asSeconds();
@@ -60,20 +69,30 @@ void Game_State::render(RenderTarget & target)
 {
     target.draw(sprite);
     button.render(target);
-    for(auto s : sprites)
+    for(auto &s : game_objs)
         s->render(target, player, button);
 
     target.draw(fps);
-    enemys.rendering(target, static_cast<sf::Vector2i>(player.getPlayerPos()), player,  end_game);
+    //enemys.rendering(target, static_cast<sf::Vector2i>(player.getPlayerPos()), player,  end_game);
 }
 
 int Game_State::get_next_state()
 {
     if(end_game) {
         player.resetPlayer();
-        enemys.resetEnemies();
         end_game = false;
         return GAME_OVER_STATE;
     }
     return GAME_STATE;
+}
+//credits to Filip
+void Game_State::check_objs() {
+    for (size_t i = 0; i < game_objs.size(); i++) {
+        if (!game_objs[i]->update(player, button, game_objs)) {
+            // Remove this element.
+            std::cout << "delete obj " << typeid(*game_objs[i]).name() << std::endl;
+            game_objs.erase(game_objs.begin() + i);
+            i--;
+        }
+    }
 }

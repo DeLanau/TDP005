@@ -2,10 +2,13 @@
 #include <SFML/Graphics.hpp>
 #include "../utils/resource_manager.h"
 #include "../utils/utility.h"
+#include "Game_Object.h"
+#include "entity/player.h"
+#include "utils/Button_Manager.h"
 #include <cmath>
 #include <vector>
 
-class Enemy
+class Enemy : public Game_Object
 {
 public:
   /**
@@ -14,18 +17,25 @@ public:
    * @param size float
    *
    * @param texture sf::Texture
-   */
-  Enemy(float size, sf::Texture &texture);
+   */Enemy(float size, sf::Texture &texture);
   /**
    * @brief update enemy location
    */
-  void update(sf::Vector2i pos);
+  bool update(Player & player, Button_Manager & button, std::vector<Game_Object*> objs);
   /**
    * @brief render enemy
    *
    * @param target
    */
-  void render(sf::RenderTarget & target);
+  void render(sf::RenderTarget & target, Player & player, Button_Manager & button);
+
+  sf::FloatRect getGlobalBounds(){
+      return circle.getGlobalBounds();
+  }
+
+  const std::string name(){
+      return "enemy";
+  }
   /**
    * @brief get the enemy
    *
@@ -97,5 +107,8 @@ private:
   sf::Vector2f location{};
   sf::Texture texture;
   std::vector<sf::Texture*> textures; // unused
+  sf::Clock clock;
+  int updateTime{35};
+  sf::Time render_time{sf::milliseconds(updateTime)};
   double hp{10000};
 };

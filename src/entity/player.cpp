@@ -101,12 +101,13 @@ void Player::updatePlayerGUI()
 
 }
 
-void Player::update(Player & player, Button_Manager & button)
+bool Player::update(Player & player, Button_Manager & button, std::vector<Game_Object*> objs)
 {
     this->sprite.setPosition(this->find_direction());
     this->regenerate_mana();
     this->RestartClock();
     this->updatePlayerGUI();
+    return true;
 }
 
 void Player::renderPlayerGUI(sf::RenderTarget & target)

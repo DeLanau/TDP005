@@ -11,7 +11,7 @@ Earth_Spell::Earth_Spell() : texture{Resource_Manager<sf::Texture>::load("resour
     sprite.setTexture(texture);
 }
 
-void Earth_Spell::update(Player &player, Button_Manager & button)
+bool Earth_Spell::update(Player &player, Button_Manager & button, std::vector<Game_Object*> objs)
 {
     auto size{texture.getSize()};
     sprite.setOrigin(size.x /2, size.y / 2);
@@ -20,6 +20,7 @@ void Earth_Spell::update(Player &player, Button_Manager & button)
         sprite.setPosition(pos);
         sprite.rotate(-1);
     }
+    return true;
 }
 
 void Earth_Spell::render(sf::RenderTarget & target, Player & player, Button_Manager & button)

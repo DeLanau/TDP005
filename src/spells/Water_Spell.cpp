@@ -11,7 +11,7 @@ Water_Spell::Water_Spell() : texture{Resource_Manager<sf::Texture>::load("resour
     sprite.setTexture(texture);
 }
 
-void Water_Spell::update(Player &player, Button_Manager & button)
+bool Water_Spell::update(Player &player, Button_Manager & button, std::vector<Game_Object*> objs)
 {
     auto size{texture.getSize()};
     sprite.setOrigin(size.x /2, size.y / 2);
@@ -26,6 +26,7 @@ void Water_Spell::update(Player &player, Button_Manager & button)
             clock.restart();
         }
     }
+    return true;
 }
 
 void Water_Spell::render(sf::RenderTarget & target, Player & player, Button_Manager & button)

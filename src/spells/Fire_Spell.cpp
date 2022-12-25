@@ -16,7 +16,7 @@ Fire_Spell::Fire_Spell() : texture{Resource_Manager<sf::Texture>::load("resource
     sprite.setTexture(texture);
 }
 
-void Fire_Spell::update(Player &player, Button_Manager & button)
+bool Fire_Spell::update(Player &player, Button_Manager & button, std::vector<Game_Object*> objs)
 {
     auto size{texture.getSize()};
     sprite.setOrigin(size.x /2, size.y / 2);
@@ -30,6 +30,7 @@ void Fire_Spell::update(Player &player, Button_Manager & button)
             player.set_mana(-this->get_mana());
         }
     }
+    return true;
 }
 
 void Fire_Spell::render(sf::RenderTarget & target, Player & player, Button_Manager & button)

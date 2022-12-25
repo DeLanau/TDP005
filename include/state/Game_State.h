@@ -23,6 +23,7 @@ public:
     virtual int get_current_state() override;
 
     virtual int get_next_state() override;
+
 private:
     unsigned int curr_state{1};
 
@@ -36,9 +37,11 @@ private:
     Button_Manager button;
     HandleEnemies enemys;
 
-    std::vector<Game_Object*> sprites;
+    std::vector<Game_Object*> game_objs;
 
     sf::Clock clock;
     sf::Text fps;
+
+    void check_objs();
 
 };

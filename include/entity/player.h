@@ -44,7 +44,7 @@ public:
   /**
    * @brief updates player
    */
-  void update(Player & player, Button_Manager & button);
+  bool update(Player & player, Button_Manager & button, std::vector<Game_Object*> objs);
   /**
    * @brief Renders the player Graphical User InterFace.
    *
@@ -56,7 +56,11 @@ public:
    *
    * @param sf::RenderTarget
    */
-  virtual void render(sf::RenderTarget & target, Player & player, Button_Manager & button) override;
+  void render(sf::RenderTarget & target, Player & player, Button_Manager & button);
+
+  const std::string name(){
+      return "player";
+  }
 
   /**
    * @brief get player position
@@ -68,14 +72,13 @@ public:
   }
 
   /**
-   * @brief get player sprite
+   * @brief get player globalbounds
    *
-   * @return sf::Sprite
+   * @return sf::FloatRect
    */
-  sf::Sprite const& get_Player_Sprite()
-  {
-    return sprite;
-  }
+   sf::FloatRect getGlobalBounds(){
+      return sprite.getGlobalBounds();
+   }
 
     /**
    * @brief reset player values and position

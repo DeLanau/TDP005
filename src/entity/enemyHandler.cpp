@@ -52,10 +52,10 @@ void HandleEnemies::rendering(sf::RenderTarget & target, sf::Vector2i pos, Playe
     sf::Time elapsed_time = clock.getElapsedTime();
 
     for (auto current_enemy: enemy_container) {
-      current_enemy->update(pos);
-      current_enemy->render(target);
+     // current_enemy->update(pos);
+     // current_enemy->render(target);
       if (elapsed_time > render_time) {
-	current_enemy->setLocation(current_enemy->getxMovement(), current_enemy->getyMovement());
+	  current_enemy->setLocation(current_enemy->getxMovement(), current_enemy->getyMovement());
       }
 
      /** if (current_enemy->getCircle().getGlobalBounds().intersects(player.get_Player_Sprite().getGlobalBounds()))

@@ -6,13 +6,60 @@ Enemy::Enemy(float size, sf::Texture &texture): size{size}, location{spawnPoint(
     circle.setTexture(&texture);
 }
 
-void Enemy::update(sf::Vector2i pos)
-{
+bool Enemy::update(Player &player, Button_Manager &button, std::vector<Game_Object *> objs) {
+
+    if (player.get_hp() <= 0)
+        return false;
+
+    //TODO update player score
+
+    if (button.get_spell_active()) {
+        for (auto &o: objs) {
+
+            if (this->circle.getGlobalBounds().intersects(o->getGlobalBounds())) {
+
+                switch (button.get_current_button_id()) {
+
+                    case 0:
+                        break;
+                    case 1:
+                        if(o->name() == "earth")
+                            this->setLocation(-this->getxMovement(), -this->getyMovement());
+                        break;
+                    case 2:
+                        if(o->name() == "fire")
+                            return false;
+                        break;
+                    case 3:
+                        if(o->name() == "wind")
+                            return false;
+                        break;
+                }
+            }
+            //std::cout << o->name() << " " << o->getGlobalBounds().width << " " << o->getGlobalBounds().height << std::endl;
+        }
+
+    }
+
+    sf::Time elapsed_time = clock.getElapsedTime();
+    if (elapsed_time > render_time) {
+        this->setLocation(this->getxMovement(), this->getyMovement());
+    }
+    sf::Vector2i pos{static_cast<sf::Vector2i>(player.getPlayerPos())};
     circle.setPosition(location);
     setMovement(pos);
+
+    if (elapsed_time > render_time) {
+        render_time += sf::milliseconds(updateTime);
+    }
+
+    if (circle.getGlobalBounds().intersects(player.getGlobalBounds())){
+        player.set_hp(-1);
+    }
+    return true;
 }
 
-void Enemy::render(sf::RenderTarget & target)
+void Enemy::render(sf::RenderTarget & target, Player & player, Button_Manager & button)
 {
     target.draw(circle);
 }

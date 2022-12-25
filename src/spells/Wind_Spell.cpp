@@ -11,7 +11,7 @@ Wind_Spell::Wind_Spell() : texture{Resource_Manager<sf::Texture>::load("resource
     sprite.setTexture(texture);
 }
 
-void Wind_Spell::update(Player &player, Button_Manager & button)
+bool Wind_Spell::update(Player &player, Button_Manager & button, std::vector<Game_Object*> objs)
 {
     auto size{texture.getSize()};
     sprite.setOrigin(size.x /2, size.y / 2);
@@ -21,6 +21,7 @@ void Wind_Spell::update(Player &player, Button_Manager & button)
         sprite.rotate(-1);
         player.set_mana(-this->get_mana());
     }
+    return true;
 }
 
 void Wind_Spell::render(sf::RenderTarget & target, Player & player, Button_Manager & button)

@@ -14,17 +14,22 @@ public:
 
     virtual ~Fire_Spell() = default;
 
-    virtual void update(Player &player, Button_Manager & button) override;
+    virtual bool update(Player &player, Button_Manager & button, std::vector<Game_Object*> objs) override;
 
     virtual void render(sf::RenderTarget &target, Player &player, Button_Manager & button) override;
+
+    sf::FloatRect getGlobalBounds(){
+        return sprite.getGlobalBounds();
+    }
+
+    const std::string name(){
+        return "fire";
+    }
 
     virtual double get_mana() override;
 
     virtual double get_damage() override;
 
-    virtual sf::Sprite get_sprite() override {
-        return sprite;
-    }
 private:
     unsigned int mana{}, damage{};
     int x{}, y{};

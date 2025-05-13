@@ -1,3 +1,4 @@
+LiU, IP course. Project: Object Oriented System, 6 credits.
 # TDP005
 
 ## Struktur av projekt
